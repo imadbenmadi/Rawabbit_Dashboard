@@ -19,8 +19,8 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
     }, [location.pathname]);
     return (
         <div className=" w-full h-full overflow-auto custom-overflow">
-            <div className=" flex  items-center text-xl md:text-4xl text-green justify-center pt-4 ">
-                <div>Rawabbit</div>
+            <div className=" flex  items-center text-xl md:text-4xl text-white  justify-center pt-4 ">
+                <div className=" ">Rawabbit</div>
             </div>
             <div className=" w-full h-[1px] bg-white my-6"></div>
             {/* nav items */}
