@@ -3,7 +3,6 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
 import swal from "sweetalert2";
 import axios from "axios";
-import img from "../../../public/wallpaper.jpg";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { Formate_Date } from "../../Logic/Formate_Date";
