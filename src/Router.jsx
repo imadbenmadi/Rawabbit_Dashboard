@@ -21,7 +21,7 @@ import Dashboard_WebSites from "./Components/Dashboard_Courses/Dashboard_Courses
 import Add_WebSite from "./Components/Dashboard_Courses/Add_Course";
 import Current_WebSites from "./Components/Dashboard_Courses/Current_Courses";
 import Edit_WebSite from "./Components/Dashboard_Courses/Edit_Course";
-import Dashboard_Requests from "./Components/Dashboard_Services/Dashboard_Services";
+import Dashboard_Requests from "./Components/Dashboard_Courses/Dashboard_Courses";
 
 const routes = createBrowserRouter([
     {
@@ -82,9 +82,6 @@ const routes = createBrowserRouter([
             {
                 path: "/Requests",
                 element: <Dashboard_Requests />,
-                children: [
-                    { index: true, element: <Current_Requests /> },
-                ],
             },
         ],
     },
