@@ -44,50 +44,50 @@ import Edit_Blog from "./Components/Dashboard_Blogs/Edit_Blog";
 
 const routes = createBrowserRouter([
     {
-        path: "/Dashboard",
+        path: "/",
         element: <Dashboard />,
         children: [
             { index: true, element: <Dashboard_home /> },
             {
-                path: "/Dashboard/Users",
+                path: "/Users",
                 element: <Dashboard_Users />,
                 children: [
                     { index: true, element: <Table /> },
                     {
-                        path: "/Dashboard/Users/Add",
+                        path: "/Users/Add",
                         element: <Add_user />,
                     },
                     {
-                        path: "/Dashboard/Users/:id",
+                        path: "/Users/:id",
                         element: <User />,
                         children: [
                             { index: true, element: <Default_user /> },
                             {
-                                path: "/Dashboard/Users/:id/Edit",
+                                path: "/Users/:id/Edit",
                                 element: <Edit_user />,
                             },
                             {
-                                path: "/Dashboard/Users/:id/Notification",
+                                path: "/Users/:id/Notification",
                                 element: <Dashboard_Users_Notification />,
                             },
                             {
-                                path: "/Dashboard/Users/:id/Current_Notifications",
+                                path: "/Users/:id/Current_Notifications",
                                 element: <Current_Notifications />,
                             },
                             {
-                                path: "/Dashboard/Users/:id/Courses",
+                                path: "/Users/:id/Courses",
                                 element: <Dashboard_User_Courses />,
                             },
                             {
-                                path: "/Dashboard/Users/:id/Services",
+                                path: "/Users/:id/Services",
                                 element: <Dashboard_User_Services />,
                             },
                             {
-                                path: "/Dashboard/Users/:id/Courses_Requests",
+                                path: "/Users/:id/Courses_Requests",
                                 element: <Dashboard_User_Courses_Requests />,
                             },
                             {
-                                path: "/Dashboard/Users/:id/Services_Requests",
+                                path: "/Users/:id/Services_Requests",
                                 element: <Dashboard_User_Services_Requests />,
                             },
                         ],
@@ -95,61 +95,61 @@ const routes = createBrowserRouter([
                 ],
             },
             {
-                path: "/Dashboard/Courses",
+                path: "/Courses",
                 element: <Dashboard_Courses />,
                 children: [
                     { index: true, element: <Current_Skate_Courses /> },
-                    { path: "/Dashboard/Courses/Add", element: <Add_Course /> },
+                    { path: "/Courses/Add", element: <Add_Course /> },
                     {
-                        path: "/Dashboard/Courses/Requests",
+                        path: "/Courses/Requests",
                         element: <Courses_Requests />,
                     },
                     {
-                        path: "/Dashboard/Courses/:id/Edit",
+                        path: "/Courses/:id/Edit",
                         element: <Edit_Course />,
                     },
                 ],
             },
             {
-                path: "/Dashboard/Events",
+                path: "/Events",
                 element: <Dashboard_Events />,
                 children: [
                     { index: true, element: <Current_Skate_Events /> },
-                    { path: "/Dashboard/Events/Add", element: <Add_Event /> },
+                    { path: "/Events/Add", element: <Add_Event /> },
                     {
-                        path: "/Dashboard/Events/:id/Edit",
+                        path: "/Events/:id/Edit",
                         element: <Edit_Event />,
                     },
                 ],
             },
 
             {
-                path: "/Dashboard/Services",
+                path: "/Services",
                 element: <Dashboard_Services />,
                 children: [
                     { index: true, element: <Current_Skate_Services /> },
                     {
-                        path: "/Dashboard/Services/Add",
+                        path: "/Services/Add",
                         element: <Add_Service />,
                     },
                     {
-                        path: "/Dashboard/Services/Requests",
+                        path: "/Services/Requests",
                         element: <Services_Requests />,
                     },
                     {
-                        path: "/Dashboard/Services/:id/Edit",
+                        path: "/Services/:id/Edit",
                         element: <Edit_Service />,
                     },
                 ],
             },
             {
-                path: "/Dashboard/Blogs",
+                path: "/Blogs",
                 element: <Dashboard_Blogs />,
                 children: [
                     { index: true, element: <Current_Skate_Blogs /> },
-                    { path: "/Dashboard/Blogs/Add", element: <Add_Blog /> },
+                    { path: "/Blogs/Add", element: <Add_Blog /> },
                     {
-                        path: "/Dashboard/Blogs/:id/Edit",
+                        path: "/Blogs/:id/Edit",
                         element: <Edit_Blog />,
                     },
                 ],
