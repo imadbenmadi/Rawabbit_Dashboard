@@ -1,30 +1,8 @@
-
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./Components/Home/Home";
-import App from "./App";
+
 import Not_Finished from "./Components/Not_Finished";
-import Blogs from "./Components/Blogs/Blogs";
-import Blogs_item from "./Components/Blogs/Blogs_item";
-import Login from "./Components/Login";
-import Register from "./Components/Register/Register";
-import Services from "./Components/Servicecs/Services";
-import Courses from "./Components/Courses/Courses";
-import Course_item from "./Components/Courses/Course_item";
-import Service_item from "./Components/Servicecs/Service_item";
-import Events from "./Components/Events/Events";
-import Events_item from "./Components/Events/Events_item";
-import Contact from "./Components/Contact/Contact";
-import VerifyEmail from "./Components/Verify_email/Verify_email";
-
-import Profile from "./Components/Profile/Profile";
-import ProfileInfo from "./Components/Profile/Profile_Info";
-// import Profile_Services from "./Components/Profile/Profile_Services";
-// import Profile_Notifications from "./Components/Profile/Profile_Notifications";
-// import Profile_Courses from "./Components/Profile/Profile_Courses";
-// import Profile_Edit from "./Components/Profile/Profile_Edit"; 
-// import Profile_Requests from "./Components/Profile/Requests";
-
 import Not_Found from "./Components/Not_Found";
+
 import Dashboard from "./Dashboard/Dashboard";
 import Dashboard_Login from "./Dashboard/Dashboard_Login";
 import Dashboard_home from "./Dashboard/Dashboard_home/Dashboard_home";
@@ -183,72 +161,8 @@ const routes = createBrowserRouter([
         ],
     },
     {
-        path: "/Profile/:id",
-        element: <Profile />,
-        children: [
-            { index: true, element: <ProfileInfo /> },
-            {
-                path: "/Profile/:id/Edit",
-                element: <Not_Finished />,
-            },
-            {
-                path: "/Profile/:id/Notifications",
-                element: <Not_Finished />,
-            },
-            {
-                path: "/Profile/:id/Notifications/:id",
-                element: <Not_Finished />,
-            },
-            {
-                path: "/Profile/:id/Courses",
-                element: <Not_Finished />,
-            },
-            {
-                path: "/Profile/:id/Services",
-                element: <Not_Finished />,
-            },
-            {
-                path: "/Profile/:id/Requests",
-                element: <Not_Finished />,
-            },
-        ],
-    },
-    {
-        path: "/",
-        element: <App />,
-        children: [
-            { index: true, element: <Home /> },
-            { path: "/Services", element: <Services /> },
-            { path: "/Services/:id", element: <Service_item /> },
-            { path: "/Courses", element: <Courses /> },
-            { path: "/Courses/:id", element: <Course_item /> },
-            { path: "/Events", element: <Events /> },
-            { path: "/Events/:id", element: <Events_item /> },
-            { path: "/Contact", element: <Contact /> },
-            { path: "/Blogs", element: <Blogs /> },
-            { path: "/Blogs/:id", element: <Blogs_item /> },
-            {
-                path: "/verifyEmail",
-                element: <VerifyEmail />,
-            },
-            {
-                path: "*",
-                element: <Not_Found />,
-            },
-        ],
-    },
-
-    {
         path: "/Dashboard_Login",
         element: <Dashboard_Login />,
-    },
-    {
-        path: "/Login",
-        element: <Login />,
-    },
-    {
-        path: "/Register",
-        element: <Register />,
     },
     {
         path: "*",
