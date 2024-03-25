@@ -27,10 +27,10 @@ function Dashboard_Login() {
                     validateStatus: () => true,
                 }
             );
-
+            console.log(response);
             if (response.status == 200) {
                 Swal.fire("Done!", "Logged in Successfully", "success");
-                Navigate("/Dashboard");
+                Navigate("/");
             } else if (response.status == 401) {
                 Swal.fire(
                     "Unauthorized!",
@@ -63,6 +63,7 @@ function Dashboard_Login() {
                 );
             }
         } catch (error) {
+            console.log(error);
             Swal.fire(
                 "Error!",
                 `Something Went Wrong ,${error.message}`,
@@ -172,7 +173,7 @@ function Dashboard_Login() {
                                 className={` ${
                                     isSubmitting
                                         ? "bg-gray_white text-gray"
-                                        : " bg-blueè text-white"
+                                        : " bg-blue text-white"
                                 } w-fit m-auto px-4 py-2 rounded font-semibold `}
                                 disabled={isSubmitting}
                             >

@@ -43,7 +43,7 @@ function Dashboard() {
     };
     useEffect(() => {
         fetchData();
-    }, [Auth]);
+    }, []);
     if (loading)
         return (
             <div className=" w-screen h-screen flex items-center justify-center">
