@@ -1,4 +1,4 @@
-import Logo from "../../public/Logo.png";
+import Logo from "../public/Logo.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import Axios from "axios";
 import Swal from "sweetalert2";
 
-import { useAppContext } from "../Context/AppContext";
+import { useAppContext } from "./Context/AppContext";
 function Dashboard_Login() {
     const { store_login } = useAppContext();
 
