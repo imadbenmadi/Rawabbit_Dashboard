@@ -78,7 +78,7 @@ function Dashboard_Login() {
             <Link to={"/"} className="select-none flex m-auto w-fit">
                 <img className=" w-20 m-auto pt-5 " src={Logo} alt="" />
             </Link>
-            <div className=" m-auto text-center pt-5 text-2xl font-semibold text-green ">
+            <div className=" m-auto text-center pt-5 text-2xl font-semibold text-blue ">
                 Welcome Back Admin
             </div>
             {/* input fields */}
@@ -172,7 +172,7 @@ function Dashboard_Login() {
                                 className={` ${
                                     isSubmitting
                                         ? "bg-gray_white text-gray"
-                                        : " bg-green text-white"
+                                        : " bg-blueè text-white"
                                 } w-fit m-auto px-4 py-2 rounded font-semibold `}
                                 disabled={isSubmitting}
                             >

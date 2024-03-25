@@ -31,14 +31,14 @@ function Dashboard() {
                 setAuth(true);
                 setLoading(false);
             } else {
-                setAuth(true);
+                setAuth(false);
                 setLoading(false);
-                // Navigate("/Dashboard_Login");
+                Navigate("/Dashboard_Login");
             }
         } catch (error) {
-            setAuth(true);
+            setAuth(false);
             setLoading(false);
-            // Navigate("/Dashboard_Login");
+            Navigate("/Dashboard_Login");
         }
     };
     useEffect(() => {

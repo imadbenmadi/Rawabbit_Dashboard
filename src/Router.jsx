@@ -23,7 +23,7 @@ import Add_WebSite from "./Components/WebSites/Add_WebSite";
 import Current_WebSites from "./Components/WebSites/Current_WebSites";
 import Edit_WebSite from "./Components/WebSites/Edit_WebSite";
 
-import Dashboard_Requests from "./Components/Dashboard_Courses/Dashboard_Courses";
+// import Dashboard_Requests from "./Components/Dashboard_Courses/Dashboard_Courses";
 
 const routes = createBrowserRouter([
     {
@@ -81,10 +81,10 @@ const routes = createBrowserRouter([
                     },
                 ],
             },
-            {
-                path: "/Requests",
-                element: <Dashboard_Requests />,
-            },
+            // {
+            //     path: "/Requests",
+            //     element: <Dashboard_Requests />,
+            // },
         ],
     },
     {
