@@ -166,7 +166,7 @@ function Add_Service() {
                                 <div className="flex flex-col items-center gap-1">
                                     <button
                                         type="button"
-                                        className="bg-blue-500  px-4 py-2 rounded font-semibold"
+                                        className="bg-green-500  px-4 py-2 rounded font-semibold"
                                         onClick={() =>
                                             document
                                                 .getElementById("image")
@@ -186,7 +186,7 @@ function Add_Service() {
                                                 className=" w-full h-[200px] md:w-80 md:h-80 object-cover rounded"
                                             />
                                             <div
-                                                className=" absolute top-0 right-0 bg-blue text-white font-bold text-3xl cursor-pointer"
+                                                className=" absolute top-0 right-0 bg-green text-white font-bold text-3xl cursor-pointer"
                                                 onClick={() =>
                                                     setFieldValue("image", null)
                                                 }

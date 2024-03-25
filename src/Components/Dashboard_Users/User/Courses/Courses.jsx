@@ -1,4 +1,3 @@
-
 import { useOutletContext } from "react-router";
 import { IoWarning } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -9,7 +8,6 @@ function Courses() {
     if (!user) return null;
     const userId = user._id;
 
-    
     if (user.Courses && Array.isArray(user.Courses)) {
         if (user.Courses.length === 0)
             return (

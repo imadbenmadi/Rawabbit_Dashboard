@@ -1,4 +1,3 @@
-
 import { useOutletContext } from "react-router";
 import { IoWarning } from "react-icons/io5";
 import { Link } from "react-router-dom";

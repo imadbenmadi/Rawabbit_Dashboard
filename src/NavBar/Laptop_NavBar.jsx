@@ -1,6 +1,5 @@
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import logo from "../../public/skate_circle.png";
-
 
 import { TbWorld } from "react-icons/tb";
 import { HiMiniUsers } from "react-icons/hi2";
@@ -20,11 +19,8 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
     }, [location.pathname]);
     return (
         <div className=" w-full h-full overflow-auto custom-overflow">
-            <div className=" flex gap-3 items-center text-xl md:text-4xl text-green justify-center pt-4 ">
-                <div>
-                    <img src={logo} alt="logo" className=" w-8 md:w-12" />
-                </div>
-                <div>Skate</div>
+            <div className=" flex  items-center text-xl md:text-4xl text-green justify-center pt-4 ">
+                <div>Rawabbit</div>
             </div>
             <div className=" w-full h-[1px] bg-white my-6"></div>
             {/* nav items */}

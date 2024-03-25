@@ -235,7 +235,7 @@ function Edit_Blog() {
                                     <div className="flex flex-col items-center gap-1">
                                         <button
                                             type="button"
-                                            className="bg-blue-500  px-4 py-2 rounded font-semibold"
+                                            className="bg-green-500  px-4 py-2 rounded font-semibold"
                                             onClick={() =>
                                                 document
                                                     .getElementById("image")

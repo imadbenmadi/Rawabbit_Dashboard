@@ -3,12 +3,18 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;500;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
 
 body {
-    font-family: "Outfit", sans-serif;
+    /* font-family: "Outfit", sans-serif; */
+    font-family: "Darker Grotesque", sans-serif;
 }
 #root {
-    font-family: "Outfit", sans-serif;
+    /* font-family: "Outfit", sans-serif; */
+    font-family: "Darker Grotesque", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
     box-sizing: border-box;
     padding: 0;
     margin: 0;

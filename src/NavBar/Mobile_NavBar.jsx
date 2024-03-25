@@ -154,9 +154,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                     <Link
                         to={`/Blogs`}
                         className={`select-none flex items-center gap-3 cursor-pointer ${
-                            Active_nav === "Blogs"
-                                ? "text-green"
-                                : "text-white"
+                            Active_nav === "Blogs" ? "text-green" : "text-white"
                         }`}
                     >
                         <IoIosPaper />

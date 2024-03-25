@@ -4,12 +4,12 @@ export default {
     theme: {
         extend: {
             colors: {
-                green2: "#10b981",
+                blue2: "#66B2FF",
                 black_text: "#1f1f1f",
                 gray: "#525252",
                 gray_white: "#e6e6e6",
-                green: "#078343",
-                blue: "#004172",
+                green: "#3399FF",
+                blue: "##3399FF",
             },
             fontFamily: {
                 customFont: ['"Outfit"', "sans-serif"],

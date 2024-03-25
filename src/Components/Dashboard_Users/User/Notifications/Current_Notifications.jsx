@@ -1,4 +1,3 @@
-
 import { useOutletContext } from "react-router-dom";
 import { PiWarningCircleBold } from "react-icons/pi";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -17,7 +16,7 @@ function Current_Notifications() {
     const Notifications = user.Notifications;
     const userId = location.pathname.split("/")[3];
 
-    return (   
+    return (
         <div className="pt-4">
             <Link
                 to={`/Dashboard/Users/${userId}`}
