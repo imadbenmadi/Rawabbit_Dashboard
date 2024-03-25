@@ -17,7 +17,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
     const Navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
-        setActive_nav(location.pathname.split("/")[2]);
+        setActive_nav(location.pathname.split("/")[1]);
     }, [location.pathname]);
 
     return (
@@ -31,7 +31,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                     <div className=" flex flex-col gap-12 ml-4">
                         {/* nav items */}
                         <Link
-                            to={`/Dashboard/Users`}
+                            to={`/Users`}
                             onClick={() => SetOpenNav(false)}
                             className={`select-none flex items-center gap-1 cursor-pointer ${
                                 Active_nav == "Users" && "text-green"
@@ -41,7 +41,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                             <div>Users</div>
                         </Link>
                         <Link
-                            to={`/Dashboard/Services`}
+                            to={`/Services`}
                             onClick={() => SetOpenNav(false)}
                             className={`select-none flex items-center gap-1 cursor-pointer ${
                                 Active_nav == "Services" && "text-green"
@@ -51,7 +51,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                             <div>Services</div>
                         </Link>
                         <Link
-                            to={`/Dashboard/Courses`}
+                            to={`/Courses`}
                             onClick={() => SetOpenNav(false)}
                             className={`select-none flex items-center gap-1 cursor-pointer ${
                                 Active_nav == "Courses" && "text-green"
@@ -61,7 +61,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                             <div>Courses</div>
                         </Link>
                         <Link
-                            to={`/Dashboard/Events`}
+                            to={`/Events`}
                             onClick={() => SetOpenNav(false)}
                             className={`select-none flex items-center gap-1 cursor-pointer ${
                                 Active_nav == "Events" && "text-green"
@@ -71,7 +71,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                             <div>Events</div>
                         </Link>
                         <Link
-                            to={`/Dashboard/Blogs`}
+                            to={`/Blogs`}
                             onClick={() => SetOpenNav(false)}
                             className={`select-none flex items-center gap-1 cursor-pointer ${
                                 Active_nav == "Blogs" && "text-green"
@@ -114,7 +114,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                     {/* nav items */}
 
                     <Link
-                        to={`/Dashboard/Users`}
+                        to={`/Users`}
                         className={`text-lg select-none flex items-center gap-3 cursor-pointer ${
                             Active_nav === "Users" ? "text-green" : "text-white"
                         }`}
@@ -122,7 +122,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                         <HiMiniUsers />
                     </Link>
                     <Link
-                        to={`/Dashboard/Services`}
+                        to={`/Services`}
                         className={`text-2xl select-none flex items-center gap-3 cursor-pointer ${
                             Active_nav === "Services"
                                 ? "text-green"
@@ -132,7 +132,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                         <FaHandshake />
                     </Link>
                     <Link
-                        to={`/Dashboard/Courses`}
+                        to={`/Courses`}
                         className={`select-none flex items-center gap-3 cursor-pointer ${
                             Active_nav === "Courses"
                                 ? "text-green"
@@ -142,7 +142,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                         <FaBook />
                     </Link>
                     <Link
-                        to={`/Dashboard/Events`}
+                        to={`/Events`}
                         className={`select-none flex items-center gap-3 cursor-pointer ${
                             Active_nav === "Events"
                                 ? "text-green"
@@ -152,7 +152,7 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                         <FaCalendarCheck />
                     </Link>
                     <Link
-                        to={`/Dashboard/Blogs`}
+                        to={`/Blogs`}
                         className={`select-none flex items-center gap-3 cursor-pointer ${
                             Active_nav === "Blogs"
                                 ? "text-green"

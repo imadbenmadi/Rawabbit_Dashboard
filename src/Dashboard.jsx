@@ -1,4 +1,3 @@
-import NavBar from "./Navbar";
 import Laptop_NavBar from "./NavBar/Laptop_NavBar";
 import Mobile_NavBar from "./NavBar/Mobile_NavBar";
 import { Outlet, useNavigate } from "react-router";

@@ -16,7 +16,7 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
     const Navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
-        setActive_nav(location.pathname.split("/")[2]);
+        setActive_nav(location.pathname.split("/")[1]);
     }, [location.pathname]);
     return (
         <div className=" w-full h-full overflow-auto custom-overflow">
@@ -40,7 +40,7 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
                     <div>Dashboard</div>
                 </Link> */}
                 <Link
-                    to={"/Dashboard/Users"}
+                    to={"/Users"}
                     className={`select-none flex items-center gap-3 cursor-pointer ${
                         Active_nav == "Users" && "text-green"
                     }`}
@@ -49,7 +49,7 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
                     <div>Users</div>
                 </Link>
                 <Link
-                    to={"/Dashboard/Services"}
+                    to={"/Services"}
                     className={`select-none flex items-center gap-3 cursor-pointer ${
                         Active_nav == "Services" && "text-green"
                     }`}
@@ -58,7 +58,7 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
                     <div>Services</div>
                 </Link>
                 <Link
-                    to={"/Dashboard/Courses"}
+                    to={"/Courses"}
                     className={`select-none flex items-center gap-3 cursor-pointer ${
                         Active_nav == "Courses" && "text-green"
                     }`}
@@ -67,7 +67,7 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
                     <div>Courses</div>
                 </Link>
                 <Link
-                    to={"/Dashboard/Events"}
+                    to={"/Events"}
                     className={`select-none flex items-center gap-3 cursor-pointer ${
                         Active_nav == "Events" && "text-green"
                     }`}
@@ -76,7 +76,7 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
                     <div>Events</div>
                 </Link>
                 <Link
-                    to={"/Dashboard/Blogs"}
+                    to={"/Blogs"}
                     className={`select-none flex items-center gap-3 cursor-pointer ${
                         Active_nav == "Blogs" && "text-green"
                     }`}
