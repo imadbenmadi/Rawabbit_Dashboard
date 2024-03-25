@@ -12,6 +12,7 @@ import { FaCalendarCheck } from "react-icons/fa6";
 import { IoIosPaper } from "react-icons/io";
 import { HiMiniUsers } from "react-icons/hi2";
 import swal from "sweetalert2";
+import { MdSpaceDashboard } from "react-icons/md";
 
 function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
     const Navigate = useNavigate();
@@ -21,15 +22,36 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
     }, [location.pathname]);
 
     return (
-        <div className=" w-full shrink-0 h-full overflow-y-auto custom-overflow">
+        <div className=" w-full text-white shrink-0 h-full overflow-y-auto custom-overflow">
             {openNav ? (
                 <>
                     <IoClose
                         className=" text-4xl text-green  mb-8 cursor-pointer mt-6 text-center m-auto"
                         onClick={() => SetOpenNav(false)}
                     />
-                    <div className=" flex flex-col gap-12 ml-4">
+                    <div className=" flex flex-col gap-16 ml-4">
                         {/* nav items */}
+                        <Link
+                            to={"/"}
+                            onClick={() => SetOpenNav(false)}
+                            className={` flex items-center cursor-pointer ${
+                                !location.pathname.split("/")[1] &&
+                                "text-green "
+                            }`}
+                        >
+                            <MdSpaceDashboard />
+                            <div>Dashboard</div>
+                        </Link>
+                        <Link
+                            to={"/WebSites"}
+                            onClick={() => SetOpenNav(false)}
+                            className={`select-none flex items-center gap-1 cursor-pointer ${
+                                Active_nav == "WebSites" && "text-green"
+                            }`}
+                        >
+                            <TbWorld />
+                            <div>WebSites</div>
+                        </Link>
                         <Link
                             to={`/Users`}
                             onClick={() => SetOpenNav(false)}
@@ -41,67 +63,14 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                             <div>Users</div>
                         </Link>
                         <Link
-                            to={`/Services`}
-                            onClick={() => SetOpenNav(false)}
+                            to={"/Requests"}
                             className={`select-none flex items-center gap-1 cursor-pointer ${
-                                Active_nav == "Services" && "text-green"
-                            } ${Active_nav !== "Services" ? "text-white" : ""}`}
-                        >
-                            <FaHandshake />
-                            <div>Services</div>
-                        </Link>
-                        <Link
-                            to={`/Courses`}
-                            onClick={() => SetOpenNav(false)}
-                            className={`select-none flex items-center gap-1 cursor-pointer ${
-                                Active_nav == "Courses" && "text-green"
-                            } ${Active_nav !== "Courses" ? "text-white" : ""}`}
-                        >
-                            <FaBook />
-                            <div>Courses</div>
-                        </Link>
-                        <Link
-                            to={`/Events`}
-                            onClick={() => SetOpenNav(false)}
-                            className={`select-none flex items-center gap-1 cursor-pointer ${
-                                Active_nav == "Events" && "text-green"
-                            } ${Active_nav !== "Events" ? "text-white" : ""}`}
-                        >
-                            <FaCalendarCheck />
-                            <div>Events</div>
-                        </Link>
-                        <Link
-                            to={`/Blogs`}
-                            onClick={() => SetOpenNav(false)}
-                            className={`select-none flex items-center gap-1 cursor-pointer ${
-                                Active_nav == "Blogs" && "text-green"
-                            } ${Active_nav !== "Blogs" ? "text-white" : ""}`}
+                                Active_nav == "Requests" && "text-green"
+                            }`}
                         >
                             <IoIosPaper />
-                            <div>Blogs</div>
+                            <div>Requests</div>
                         </Link>
-
-                        <div
-                            className={` flex items-center gap-1 cursor-pointer text-xl text-white `}
-                            onClick={() => {
-                                swal.fire({
-                                    title: "Leaving the Dashboard ?",
-                                    text: "You will be obliged to reLogin to access the Dashboard again",
-                                    icon: "warning",
-                                    showCancelButton: true,
-                                    confirmButtonColor: "red",
-                                    cancelButtonColor: "green",
-                                    confirmButtonText: "Yes Leave it",
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        Navigate("/");
-                                    }
-                                });
-                            }}
-                        >
-                            <TbWorld />
-                            <div className="text-sm">Back to the Website</div>
-                        </div>
                     </div>
                 </>
             ) : (
@@ -114,72 +83,40 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                     {/* nav items */}
 
                     <Link
-                        to={`/Users`}
-                        className={`text-lg select-none flex items-center gap-3 cursor-pointer ${
-                            Active_nav === "Users" ? "text-green" : "text-white"
+                        to={"/"}
+                        onClick={() => SetOpenNav(false)}
+                        className={` flex items-center cursor-pointer ${
+                            !location.pathname.split("/")[1] && "text-green "
                         }`}
+                    >
+                        <MdSpaceDashboard />
+                    </Link>
+                    <Link
+                        to={"/WebSites"}
+                        onClick={() => SetOpenNav(false)}
+                        className={`select-none flex items-center gap-1 cursor-pointer ${
+                            Active_nav == "WebSites" && "text-green"
+                        }`}
+                    >
+                        <TbWorld />
+                    </Link>
+                    <Link
+                        to={`/Users`}
+                        onClick={() => SetOpenNav(false)}
+                        className={`select-none flex items-center gap-1 cursor-pointer ${
+                            Active_nav == "Users" && "text-green"
+                        } ${Active_nav !== "Users" ? "text-white" : ""}`}
                     >
                         <HiMiniUsers />
                     </Link>
                     <Link
-                        to={`/Services`}
-                        className={`text-2xl select-none flex items-center gap-3 cursor-pointer ${
-                            Active_nav === "Services"
-                                ? "text-green"
-                                : "text-white"
-                        }`}
-                    >
-                        <FaHandshake />
-                    </Link>
-                    <Link
-                        to={`/Courses`}
-                        className={`select-none flex items-center gap-3 cursor-pointer ${
-                            Active_nav === "Courses"
-                                ? "text-green"
-                                : "text-white"
-                        }`}
-                    >
-                        <FaBook />
-                    </Link>
-                    <Link
-                        to={`/Events`}
-                        className={`select-none flex items-center gap-3 cursor-pointer ${
-                            Active_nav === "Events"
-                                ? "text-green"
-                                : "text-white"
-                        }`}
-                    >
-                        <FaCalendarCheck />
-                    </Link>
-                    <Link
-                        to={`/Blogs`}
-                        className={`select-none flex items-center gap-3 cursor-pointer ${
-                            Active_nav === "Blogs" ? "text-green" : "text-white"
+                        to={"/Requests"}
+                        className={`select-none flex items-center gap-1 cursor-pointer ${
+                            Active_nav == "Requests" && "text-green"
                         }`}
                     >
                         <IoIosPaper />
                     </Link>
-
-                    <div
-                        className={` flex items-center gap-3 cursor-pointer text-xl pt-4 text-white  `}
-                        onClick={() => {
-                            swal.fire({
-                                title: "Leaving the Dashboard ?",
-                                text: "You will be obliged to reLogin to access the Dashboard again",
-                                icon: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "red",
-                                cancelButtonColor: "green",
-                                confirmButtonText: "Yes Leave it",
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    Navigate("/");
-                                }
-                            });
-                        }}
-                    >
-                        <TbWorld />
-                    </div>
                 </div>
             )}
         </div>

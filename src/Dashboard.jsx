@@ -36,9 +36,9 @@ function Dashboard() {
                 // Navigate("/Dashboard_Login");
             }
         } catch (error) {
-            setAuth(false);
+            setAuth(true);
             setLoading(false);
-            Navigate("/Dashboard_Login");
+            // Navigate("/Dashboard_Login");
         }
     };
     useEffect(() => {

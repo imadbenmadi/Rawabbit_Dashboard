@@ -9,7 +9,7 @@ export default {
                 gray: "#525252",
                 gray_white: "#e6e6e6",
                 green: "#078343",
-                blue: "##3399FF",
+                blue: "#3399FF",
                 yallow: "#FFD700",
             },
             fontFamily: {
