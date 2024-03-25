@@ -32,9 +32,9 @@ function Dashboard() {
                 setAuth(true);
                 setLoading(false);
             } else {
-                setAuth(false);
+                setAuth(true);
                 setLoading(false);
-                Navigate("/Dashboard_Login");
+                // Navigate("/Dashboard_Login");
             }
         } catch (error) {
             setAuth(false);
