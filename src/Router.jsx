@@ -17,10 +17,12 @@ import User from "./Components/Dashboard_Users/User/User";
 import Table from "./Components/Dashboard_Users/Table/Table";
 import Dashboard_User_Courses from "./Components/Dashboard_Users/User/Courses/Courses";
 import Dashboard_User_Requests from "./Components/Dashboard_Users/User/Courses_Requests/Courses_Requests";
-import Dashboard_WebSites from "./Components/Dashboard_Courses/Dashboard_Courses";
-import Add_WebSite from "./Components/Dashboard_Courses/Add_Course";
-import Current_WebSites from "./Components/Dashboard_Courses/Current_Courses";
-import Edit_WebSite from "./Components/Dashboard_Courses/Edit_Course";
+
+import Dashboard_WebSites from "./Components/WebSites/Dashboard_WebSites";
+import Add_WebSite from "./Components/WebSites/Add_WebSite";
+import Current_WebSites from "./Components/WebSites/Current_WebSites";
+import Edit_WebSite from "./Components/WebSites/Edit_WebSite";
+
 import Dashboard_Requests from "./Components/Dashboard_Courses/Dashboard_Courses";
 
 const routes = createBrowserRouter([
