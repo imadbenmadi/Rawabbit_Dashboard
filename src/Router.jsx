@@ -16,31 +16,12 @@ import Add_user from "./Components/Dashboard_Users/Add_user";
 import User from "./Components/Dashboard_Users/User/User";
 import Table from "./Components/Dashboard_Users/Table/Table";
 import Dashboard_User_Courses from "./Components/Dashboard_Users/User/Courses/Courses";
-import Dashboard_User_Courses_Requests from "./Components/Dashboard_Users/User/Courses_Requests/Courses_Requests";
-import Dashboard_User_Services from "./Components/Dashboard_Users/User/Services/Services";
-import Dashboard_User_Services_Requests from "./Components/Dashboard_Users/User/Services_Requests/Services_Requests";
-
-import Dashboard_Courses from "./Components/Dashboard_Courses/Dashboard_Courses";
-import Add_Course from "./Components/Dashboard_Courses/Add_Course";
-import Current_Skate_Courses from "./Components/Dashboard_Courses/Current_Courses";
-import Courses_Requests from "./Components/Dashboard_Courses/Requests/Requests";
-import Edit_Course from "./Components/Dashboard_Courses/Edit_Course";
-
-import Dashboard_Services from "./Components/Dashboard_Services/Dashboard_Services";
-import Add_Service from "./Components/Dashboard_Services/Add_Service";
-import Current_Skate_Services from "./Components/Dashboard_Services/Current_Services";
-import Services_Requests from "./Components/Dashboard_Services/Requests/Requests";
-import Edit_Service from "./Components/Dashboard_Services/Edit_Service";
-
-import Dashboard_Events from "./Components/Dashboard_Events/Dashboard_Events";
-import Add_Event from "./Components/Dashboard_Events/Add_Event";
-import Current_Skate_Events from "./Components/Dashboard_Events/Current_Events";
-import Edit_Event from "./Components/Dashboard_Events/Edit_Event";
-
-import Dashboard_Blogs from "./Components/Dashboard_Blogs/Dashboard_Blogs";
-import Add_Blog from "./Components/Dashboard_Blogs/Add_Blog";
-import Current_Skate_Blogs from "./Components/Dashboard_Blogs/Current_Blogs";
-import Edit_Blog from "./Components/Dashboard_Blogs/Edit_Blog";
+import Dashboard_User_Requests from "./Components/Dashboard_Users/User/Courses_Requests/Courses_Requests";
+import Dashboard_WebSites from "./Components/Dashboard_Courses/Dashboard_Courses";
+import Add_WebSite from "./Components/Dashboard_Courses/Add_Course";
+import Current_WebSites from "./Components/Dashboard_Courses/Current_Courses";
+import Edit_WebSite from "./Components/Dashboard_Courses/Edit_Course";
+import Dashboard_Requests from "./Components/Dashboard_Services/Dashboard_Services";
 
 const routes = createBrowserRouter([
     {
@@ -75,88 +56,35 @@ const routes = createBrowserRouter([
                                 element: <Current_Notifications />,
                             },
                             {
-                                path: "/Users/:id/Courses",
+                                path: "/Users/:id/WebSites",
                                 element: <Dashboard_User_Courses />,
                             },
                             {
-                                path: "/Users/:id/Services",
-                                element: <Dashboard_User_Services />,
-                            },
-                            {
                                 path: "/Users/:id/Courses_Requests",
-                                element: <Dashboard_User_Courses_Requests />,
-                            },
-                            {
-                                path: "/Users/:id/Services_Requests",
-                                element: <Dashboard_User_Services_Requests />,
+                                element: <Dashboard_User_Requests />,
                             },
                         ],
                     },
                 ],
             },
             {
-                path: "/Courses",
-                element: <Dashboard_Courses />,
+                path: "/WebSites",
+                element: <Dashboard_WebSites />,
                 children: [
-                    { index: true, element: <Current_Skate_Courses /> },
-                    { path: "/Courses/Add", element: <Add_Course /> },
+                    { index: true, element: <Current_WebSites /> },
+                    { path: "/WebSites/Add", element: <Add_WebSite /> },
                     {
-                        path: "/Courses/Requests",
-                        element: <Courses_Requests />,
-                    },
-                    {
-                        path: "/Courses/:id/Edit",
-                        element: <Edit_Course />,
+                        path: "/WebSites/:id/Edit",
+                        element: <Edit_WebSite />,
                     },
                 ],
             },
             {
-                path: "/Events",
-                element: <Dashboard_Events />,
+                path: "/Requests",
+                element: <Dashboard_Requests />,
                 children: [
-                    { index: true, element: <Current_Skate_Events /> },
-                    { path: "/Events/Add", element: <Add_Event /> },
-                    {
-                        path: "/Events/:id/Edit",
-                        element: <Edit_Event />,
-                    },
+                    { index: true, element: <Current_Requests /> },
                 ],
-            },
-
-            {
-                path: "/Services",
-                element: <Dashboard_Services />,
-                children: [
-                    { index: true, element: <Current_Skate_Services /> },
-                    {
-                        path: "/Services/Add",
-                        element: <Add_Service />,
-                    },
-                    {
-                        path: "/Services/Requests",
-                        element: <Services_Requests />,
-                    },
-                    {
-                        path: "/Services/:id/Edit",
-                        element: <Edit_Service />,
-                    },
-                ],
-            },
-            {
-                path: "/Blogs",
-                element: <Dashboard_Blogs />,
-                children: [
-                    { index: true, element: <Current_Skate_Blogs /> },
-                    { path: "/Blogs/Add", element: <Add_Blog /> },
-                    {
-                        path: "/Blogs/:id/Edit",
-                        element: <Edit_Blog />,
-                    },
-                ],
-            },
-            {
-                path: "*",
-                element: <Not_Found />,
             },
         ],
     },
