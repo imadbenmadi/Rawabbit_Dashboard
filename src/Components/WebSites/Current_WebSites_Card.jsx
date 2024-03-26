@@ -96,8 +96,7 @@ function Current_WebSites_Card({ item, onDelete }) {
                 </div>
                 <div className="flex justify-center gap-6 md:hidden">
                     <Link
-                        to={`/Dashboard/
-                    WebSites
+                        to={`/WebSites
                 /${item._id}/Edit`}
                         className="select-none flex items-center justify-start md:gap-2 text-white text-xl bg-green px-1 md:px-2  py-1 rounded md:w-[100px]"
                     >
@@ -154,7 +153,7 @@ function Current_WebSites_Card({ item, onDelete }) {
             </div>
             <div className="w-[10%] hidden md:flex flex-col items-center justify-start pt-6 gap-4 pr-5">
                 <Link
-                    to={`/Dashboard/
+                    to={`/
                 WebSites
             /${item._id}/Edit`}
                     className="select-none flex items-center justify-start md:gap-2 text-white text-xl bg-green px-1 md:px-2  py-1 rounded md:w-[100px]"

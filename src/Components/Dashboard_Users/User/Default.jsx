@@ -67,7 +67,7 @@ function Default() {
             );
 
             if (response.status == 200) {
-                Navigate("/Dashboard/Users");
+                Navigate("/Users");
                 swal.fire("User Deleted Successfully", "", "success");
 
                 // setsecces(true);
@@ -117,7 +117,7 @@ function Default() {
             ) : (
                 <div className="">
                     <Link
-                        to={"/Dashboard/Users"}
+                        to={"/Users"}
                         className="select-none mt-4 w-fit m-auto bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1"
                     >
                         <IoMdArrowRoundBack />
@@ -125,14 +125,14 @@ function Default() {
                     </Link>
                     <div className="flex flex-wrap gap-4 md:gap-10 pt-6 justify-center text-xl">
                         <Link
-                            to={"/Dashboard/Users/" + userId + "/Notification"}
+                            to={"/Users/" + userId + "/Notification"}
                             className="select-none flex items-center cursor-pointer gap-1 bg-gray text-white px-3 py-1 rounded"
                         >
                             <IoIosNotifications />
                             Send Notification
                         </Link>
                         <Link
-                            to={"/Dashboard/Users/" + userId + "/Edit"}
+                            to={"/Users/" + userId + "/Edit"}
                             className="select-none flex items-center gap-1 bg-green text-white px-3 py-1 rounded"
                         >
                             <FaPen />
@@ -226,7 +226,7 @@ function Default() {
                     <div className="flex gap-2 md:gap-10 pt-10 justify-center text-lg md:text-xl text-center">
                         <div>
                             <Link
-                                to={"/Dashboard/Users/" + userId + "/Courses"}
+                                to={"/Users/" + userId + "/Courses"}
                                 className="select-none flex items-center mb-7 justify-center cursor-pointer gap-1 bg-gray text-white px-3 py-1 rounded"
                             >
                                 {/* <IoIosNotifications /> */}
@@ -234,7 +234,7 @@ function Default() {
                             </Link>
                             <Link
                                 to={
-                                    "/Dashboard/Users/" +
+                                    "/Users/" +
                                     userId +
                                     "/Courses_Requests"
                                 }
@@ -246,7 +246,7 @@ function Default() {
                         </div>
                         <div>
                             <Link
-                                to={"/Dashboard/Users/" + userId + "/Services"}
+                                to={"/Users/" + userId + "/Services"}
                                 className="select-none flex items-center justify-center mb-7 gap-1 bg-gray text-white px-3 py-1 rounded"
                             >
                                 {/* <FaPen /> */}
@@ -254,7 +254,7 @@ function Default() {
                             </Link>
                             <Link
                                 to={
-                                    "/Dashboard/Users/" +
+                                    "/Users/" +
                                     userId +
                                     "/Services_Requests"
                                 }

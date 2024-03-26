@@ -15,7 +15,7 @@ function Dashboard_Courses() {
         <div>
             <div className="select-none flex items-center justify-center gap-2 md:gap-10 py-6 text-lg md:text-2xl">
                 <Link
-                    to={"/Dashboard/Courses"}
+                    to={"/Courses"}
                     className={`${
                         active == "Current"
                             ? "underline text-green"
@@ -25,7 +25,7 @@ function Dashboard_Courses() {
                     Current Courses
                 </Link>
                 <Link
-                    to={"/Dashboard/Courses/Requests"}
+                    to={"/Courses/Requests"}
                     className={`select-none ${
                         active == "Requests"
                             ? "underline text-green"

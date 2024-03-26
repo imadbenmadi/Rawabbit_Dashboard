@@ -13,7 +13,7 @@ function Add_WebSite() {
         <div className=" ">
             <Link
                 className="select-none bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 w-fit m-auto"
-                to={"/Dashboard/Courses"}
+                to={"/Courses"}
             >
                 <>
                     <FaArrowLeft />

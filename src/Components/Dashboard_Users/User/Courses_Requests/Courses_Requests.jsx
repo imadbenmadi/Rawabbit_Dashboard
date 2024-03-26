@@ -56,7 +56,7 @@ function Courses_Requests() {
         return (
             <div className=" pt-4">
                 <Link
-                    to={`/Dashboard/Users/${user._id}`}
+                    to={`/Users/${user._id}`}
                     className="select-none mb-4 w-fit m-auto bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 "
                 >
                     <IoMdArrowRoundBack />
@@ -71,7 +71,7 @@ function Courses_Requests() {
     return (
         <div className="relative shadow-md mt-[20px]">
             <Link
-                to={`/Dashboard/Users/${user._id}`}
+                to={`/Users/${user._id}`}
                 className="select-none mb-4 w-fit m-auto bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 "
             >
                 <IoMdArrowRoundBack />

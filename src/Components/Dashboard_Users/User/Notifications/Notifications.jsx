@@ -15,7 +15,7 @@ function Notifications() {
     return (
         <div className="pt-4">
             <Link
-                to={`/Dashboard/Users/${userId}`}
+                to={`/Users/${userId}`}
                 className="select-none mb-4 w-fit m-auto bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 "
             >
                 <IoMdArrowRoundBack />
@@ -76,7 +76,7 @@ function Notifications() {
                                     "Message sended in Successfully",
                                     "success"
                                 );
-                                Navigate("/Dashboard/Users/" + userId);
+                                Navigate("/Users/" + userId);
                             } else if (response.status == 401) {
                                 Swal.fire({
                                     title: "Unauthorised Action",
@@ -249,7 +249,7 @@ function Notifications() {
             </div>
             {/* <div className=" m-auto w-fit mt-12">
                 <Link
-                    to={`/Dashboard/Users/${userId}/Current_Notifications`}
+                    to={`/Users/${userId}/Current_Notifications`}
                     className="select-none bg-green text-white font-bold py-2 px-4 rounded"
                 >
                     View User Current Notifications
