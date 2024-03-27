@@ -6,7 +6,7 @@ import { FaBookOpen } from "react-icons/fa";
 import { FaRegHandshake } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Formate_Date } from "../../../../Logic/Formate_Date";
-// import logo from "../../../../../public/logo.png";
+import logo from "../../../../../public/Logo.png";
 import { useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
@@ -14,7 +14,7 @@ function Current_Notifications() {
     const [user, setUser] = useOutletContext();
     if (!user) return null;
     const Notifications = user.Notifications;
-    const userId = location.pathname.split("/")[3];
+    const userId = location.pathname.split("/")[2];
 
     return (
         <div className="pt-4">
@@ -37,17 +37,13 @@ function Current_Notifications() {
                         <div className="text-5xl text-gray">
                             {notification.Type === "verify" ? (
                                 <PiWarningCircleBold />
-                            ) : notification.Type === "contact" ? (
+                            ) : notification.Type === "message" ? (
                                 <MdOutlineMailOutline />
-                            ) : notification.Type === "event" ? (
+                            ) : notification.Type === "request" ? (
                                 <RiCalendarEventLine />
-                            ) : notification.Type === "course" ? (
-                                <FaBookOpen />
-                            ) : notification.Type === "service" ? (
-                                <FaRegHandshake />
                             ) : (
-                                // <img src={logo} alt="logo" className="w-14" />
-                                <span></span>
+                                <img src={logo} alt="logo" className="w-14" />
+                                // <span></span>
                             )}
                         </div>
                         <div className="flex flex-col w-full relative">

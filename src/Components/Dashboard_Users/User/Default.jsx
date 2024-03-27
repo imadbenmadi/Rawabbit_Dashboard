@@ -21,7 +21,7 @@ function Default() {
     const [error, setError] = useState(null);
     const location = useLocation();
 
-    const userId = location.pathname.split("/")[3];
+    const userId = location.pathname.split("/")[2];
     const fetchUser = async () => {
         setLoading(true);
 

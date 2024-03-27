@@ -143,22 +143,12 @@ function Notifications() {
                                         disabled={isSubmitting}
                                         className="border w-[200px] border-gray_white px-2 py-1 rounded shadow-sm appearance-none"
                                     >
-                                        <option value="">Select Type</option>
+                                        {/* <option value="">Select Type</option> */}
+                                        <option value="request">
+                                            Request Notification
+                                        </option>
                                         <option value="verify">
                                             Verify Your account
-                                        </option>
-
-                                        <option value="event">
-                                            Event Notification
-                                        </option>
-                                        <option value="course">
-                                            Course Notification
-                                        </option>
-                                        <option value="service">
-                                            Service Notification
-                                        </option>
-                                        <option value="blog">
-                                            Blog Notification
                                         </option>
                                         <option value="message">Message</option>
                                         <option value="other">Other</option>
@@ -247,14 +237,14 @@ function Notifications() {
                     )}
                 </Formik>
             </div>
-            {/* <div className=" m-auto w-fit mt-12">
+            <div className=" m-auto w-fit mt-12">
                 <Link
                     to={`/Users/${userId}/Current_Notifications`}
                     className="select-none bg-green text-white font-bold py-2 px-4 rounded"
                 >
                     View User Current Notifications
                 </Link>
-            </div> */}
+            </div>
         </div>
     );
 }

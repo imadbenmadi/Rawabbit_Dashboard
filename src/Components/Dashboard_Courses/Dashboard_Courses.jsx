@@ -6,7 +6,7 @@ function Dashboard_Courses() {
     const [active, setActive] = useState("Current");
     const location = useLocation();
     useEffect(() => {
-        if (location.pathname.split("/")[3] == "Requests")
+        if (location.pathname.split("/")[2] == "Requests")
             setActive("Requests");
         else setActive("Current");
     }, [location.pathname]);

@@ -18,7 +18,7 @@ function Edit() {
     function handleShowPassword() {
         setShowPassword(!showPassword);
     }
-    const userId = window.location.pathname.split("/")[3];
+    const userId = window.location.pathname.split("/")[2];
     return (
         <div className=" pt-4 ">
             <Link

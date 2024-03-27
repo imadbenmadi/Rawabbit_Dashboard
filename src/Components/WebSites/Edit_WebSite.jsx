@@ -16,7 +16,7 @@ import { FaRegImage } from "react-icons/fa";
 function Edit_WebSite() {
     const Navigate = useNavigate();
     const location = useLocation();
-    const Course_id = location.pathname.split("/")[3];
+    const Course_id = location.pathname.split("/")[2];
     const [Course, setCourse] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
