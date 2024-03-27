@@ -74,7 +74,7 @@ function Current_Websites() {
         return (
             <div className=" flex items-center justify-center gap-4 flex-col">
                 <div className="pl-4 text-gray font-semibold  text-2xl w-full">
-                    <span className="text-green">Skate</span> Websites :
+                    <span className="text-green">Rawabbit</span> Websites :
                 </div>
                 <div className="flex items-center  text-gray text-2xl gap-2 py-8">
                     <IoWarning className="text-2xl" />
@@ -99,7 +99,7 @@ function Current_Websites() {
             <div>
                 <div className="flex flex-wrap items-center justify-around my-5">
                     <div className="pl-4 text-gray font-semibold text-2xl">
-                        <span className="text-green">Skate</span> Websites :
+                        <span className="text-green">Rawabbit</span> Websites :
                     </div>
                     <div className=" flex items-center">
                         <Search setSearch={setSearch} />

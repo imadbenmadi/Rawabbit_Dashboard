@@ -24,6 +24,7 @@ function Add_WebSite() {
             <div className="border border-gray_white text-black_text shadow-md w-[80%] md:w-[98%] m-auto mt-3 p-5 rounded-lg">
                 <Formik
                     initialValues={{
+                        Link: "https://www.",
                         Title: "",
                         Text: "",
                         Description: "",
@@ -37,6 +38,9 @@ function Add_WebSite() {
                         if (!values.Title) {
                             errors.Title = "Title is required.";
                         }
+                        if (!values.Link) {
+                            errors.Link = "Link is required.";
+                        }
                         // Validate Text
                         if (!values.Text) {
                             errors.Text = "Text is required.";
@@ -45,7 +49,7 @@ function Add_WebSite() {
                         if (!values.Description) {
                             errors.Description = "Description is required.";
                         }
-                        
+
                         // Validate Category
                         if (!values.Category) {
                             errors.Category = "Category is required.";
@@ -59,6 +63,7 @@ function Add_WebSite() {
                         try {
                             setSubmitting(true);
                             const formData = new FormData();
+                            formData.append("Link", values.Link);
                             formData.append("Title", values.Title);
                             formData.append("Text", values.Text);
                             formData.append("Description", values.Description);
@@ -210,6 +215,25 @@ function Add_WebSite() {
                             </div>
                             <div className=" w-full ">
                                 <div>
+                                    Link{" "}
+                                    <span className="text-red-600 font-semibold">
+                                        *
+                                    </span>
+                                </div>
+                                <Field
+                                    type="text"
+                                    name="Link"
+                                    className="border border-gray_white px-2 py-1 rounded shadow w-full "
+                                    disabled={isSubmitting}
+                                />
+                                <ErrorMessage
+                                    name="Link"
+                                    component="div"
+                                    style={errorInputMessage}
+                                />
+                            </div>
+                            <div className=" w-full ">
+                                <div>
                                     Title{" "}
                                     <span className="text-red-600 font-semibold">
                                         *
@@ -328,7 +352,7 @@ function Add_WebSite() {
 }
 
 const errorInputMessage = {
-    fontSize: "12px",
+    fontSize: "16px",
     color: "red",
 };
 
