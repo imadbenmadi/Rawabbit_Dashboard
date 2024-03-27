@@ -7,11 +7,11 @@ function WebSites() {
     const [user, setUser] = useOutletContext();
     if (!user) return null;
     const userId = user._id;
-
+    console.log(user.WebSites);
     if (user.WebSites && Array.isArray(user.WebSites)) {
         if (user.WebSites.length === 0)
             return (
-                <div className="pt-4 ">
+                <div className="pt-6 ">
                     <Link
                         to={`/Users/${userId}`}
                         className="select-none mb-4 w-fit m-auto bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 "
@@ -38,7 +38,7 @@ function WebSites() {
                         <div>Back to user</div>
                     </Link>
                     <div className=" text-2xl pl-4 text-gray underline">
-                        Enrolled WebSites
+                        user WebSites
                     </div>
                     {user.WebSites.map((WebSite, index) => (
                         <Card WebSite={WebSite} index={index} />

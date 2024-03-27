@@ -16,6 +16,7 @@ import Add_user from "./Components/Dashboard_Users/Add_user";
 import User from "./Components/Dashboard_Users/User/User";
 import Table from "./Components/Dashboard_Users/Table/Table";
 import User_Websites from "./Components/Dashboard_Users/User/WebSites/WebSites";
+import User_Requests from "./Components/Dashboard_Users/User/Requests/Requests";
 // import Dashboard_User_Courses from "./Components/Dashboard_Users/User/Courses/Courses";
 // import Dashboard_User_Requests from "./Components/Dashboard_Users/User/Courses_Requests/Courses_Requests";
 
@@ -64,7 +65,7 @@ const routes = createBrowserRouter([
                             },
                             {
                                 path: "/Users/:id/Requests",
-                                element: <Not_Finished />,
+                                element: <User_Requests />,
                             },
                             // {
                             //     path: "/Users/:id/WebSites",

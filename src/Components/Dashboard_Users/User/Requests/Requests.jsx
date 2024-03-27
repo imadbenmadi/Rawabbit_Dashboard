@@ -6,7 +6,7 @@ import { useOutletContext } from "react-router";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Card from "./Card";
-function Services_Requests() {
+function Requests_Requests() {
     const [Requests, setRequests] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ function Services_Requests() {
         try {
             setLoading(true);
             const response = await axios.get(
-                `http://localhost:3000/Dashboard/Users/${user._id}/Services/Requests`,
+                `http://localhost:3000/Dashboard/Users/${user._id}/Requests/Requests`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,
@@ -64,7 +64,7 @@ function Services_Requests() {
                 </Link>
                 <div className=" flex justify-center items-center gap-1 text-2xl text-gray pt-8">
                     <IoWarning />
-                    No Services Requests from this user
+                    No Requests Requests from this user
                 </div>
             </div>
         );
@@ -93,10 +93,10 @@ function Services_Requests() {
                             Status
                         </th>
                         <th scope="col" className=" border">
-                            Service Title
+                            Request Title
                         </th>
                         <th scope="col" className=" border">
-                            Service Price
+                            Request Price
                         </th>
                         <th scope="col" className="border">
                             Action
@@ -130,4 +130,4 @@ function Services_Requests() {
     );
 }
 
-export default Services_Requests;
+export default Requests_Requests;
