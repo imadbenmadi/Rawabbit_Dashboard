@@ -7,20 +7,20 @@ import axios from "axios";
 import ErrorPage from "../ErrorPage";
 import Search from "./Search";
 function Current_Websites() {
-    const [Courses, setCourses] = useState(null);
+    const [Websites, setWebsites] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState("");
 
-    const fetch_Courses = async () => {
+    const fetch_Websites = async () => {
         setLoading(true);
         try {
-            const response = await axios.get("http://localhost:3000/Courses", {
+            const response = await axios.get("http://localhost:3000/Websites", {
                 withCredentials: true,
                 validateStatus: () => true,
             });
             if (response.status == 200) {
-                setCourses(response.data.courses);
+                setWebsites(response.data.Websites);
             } else {
                 setError(response.data);
             }
@@ -31,11 +31,11 @@ function Current_Websites() {
         }
     };
     useEffect(() => {
-        fetch_Courses();
+        fetch_Websites();
     }, []);
-    const handleDeleteCourse = (CourseId) => {
-        setCourses((prevCourses) =>
-            prevCourses.filter((Course) => Course._id !== CourseId)
+    const handleDeleteWebsite = (WebsiteId) => {
+        setWebsites((prevWebsites) =>
+            prevWebsites.filter((Website) => Website._id !== WebsiteId)
         );
     };
     if (loading)
@@ -47,27 +47,27 @@ function Current_Websites() {
     if (error) {
         return <ErrorPage />;
     }
-    if (!Courses) return null;
-    else if (Courses.length === 0)
+    if (!Websites) return null;
+    else if (Websites.length === 0)
         return (
             <div className=" flex items-center justify-center gap-4 flex-col">
                 <div className="pl-4 text-gray font-semibold  text-2xl w-full">
-                    <span className="text-green">Skate</span> Courses :
+                    <span className="text-green">Skate</span> Websites :
                 </div>
                 <div className="flex items-center  text-gray text-2xl gap-2 py-8">
                     <IoWarning className="text-2xl" />
                     <div className="text-center text-gray">
-                        No courses Found
+                        No Websites Found
                     </div>
                 </div>
                 <Link
                     className="select-none bg-green rounded cursor-pointer text-white text-xl
                      flex items-center gap-2 px-3 py-1 w-fit m-auto"
-                    to={"/Courses/Add"}
+                    to={"/Websites/Add"}
                 >
                     <>
                         <FaPlus />
-                        <div>Add Course</div>
+                        <div>Add Website</div>
                     </>
                 </Link>
             </div>
@@ -77,53 +77,53 @@ function Current_Websites() {
             <div>
                 <div className="flex flex-wrap items-center justify-around my-5">
                     <div className="pl-4 text-gray font-semibold text-2xl">
-                        <span className="text-green">Skate</span> Courses :
+                        <span className="text-green">Skate</span> Websites :
                     </div>
                     <div className=" flex items-center">
                         <Search setSearch={setSearch} />
                     </div>
                     <Link
                         className="select-none bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1"
-                        to={"/Courses/Add"}
+                        to={"/Websites/Add"}
                     >
                         <>
                             <FaPlus />
-                            <div>Add Course</div>
+                            <div>Add Website</div>
                         </>
                     </Link>
                 </div>
                 <div>
                     {!search &&
-                        Courses.map((Course, index) => (
+                        Websites.map((Website, index) => (
                             <Current_Websites_Card
-                                item={Course}
+                                item={Website}
                                 key={index}
-                                onDelete={() => handleDeleteCourse(Course._id)}
+                                onDelete={() => handleDeleteWebsite(Website._id)}
                             />
                         ))}
 
                     {search &&
-                        Courses.filter((Course) =>
-                            Course.Title.toLowerCase().includes(
+                        Websites.filter((Website) =>
+                            Website.Title.toLowerCase().includes(
                                 search.toLowerCase()
                             )
-                        ).map((Course, index) => (
+                        ).map((Website, index) => (
                             <Current_Websites_Card
-                                item={Course}
+                                item={Website}
                                 key={index}
-                                onDelete={() => handleDeleteCourse(Course._id)}
+                                onDelete={() => handleDeleteWebsite(Website._id)}
                             />
                         ))}
                     {search &&
-                        Courses.filter((Course) =>
-                            Course.Title.toLowerCase().includes(
+                        Websites.filter((Website) =>
+                            Website.Title.toLowerCase().includes(
                                 search.toLowerCase()
                             )
                         ).length === 0 && (
                             <div className=" py-2  text-gray text-xl h-[80px] ">
                                 <div className="flex justify-center items-center w-full text-center gap-1">
                                     <IoWarning className="text-red-600 text-3xl" />
-                                    No Courses match the search query
+                                    No Websites match the search query
                                 </div>
                             </div>
                         )}

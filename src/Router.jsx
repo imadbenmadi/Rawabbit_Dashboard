@@ -5,7 +5,8 @@ import Not_Found from "./Components/Not_Found";
 
 import Dashboard from "./Dashboard";
 import Dashboard_Login from "./Dashboard_Login";
-import Dashboard_home from "./Components/Dashboard_home/Dashboard_home";
+import Dashboard_home from "./Components/Home/Dashboard_home";
+
 
 import Dashboard_Users from "./Components/Dashboard_Users/Dashboard_Users";
 import Default_user from "./Components/Dashboard_Users/User/Default";
