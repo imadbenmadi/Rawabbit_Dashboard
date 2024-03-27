@@ -42,7 +42,8 @@ function Current_Notifications() {
                             ) : notification.Type === "request" ? (
                                 <RiCalendarEventLine />
                             ) : (
-                                <img src={logo} alt="logo" className="w-14" />
+                                // <img src={logo} alt="logo" className="w-14" />
+                                <MdOutlineMailOutline />
                                 // <span></span>
                             )}
                         </div>
