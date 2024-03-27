@@ -15,15 +15,15 @@ import Current_Notifications from "./Components/Dashboard_Users/User/Notificatio
 import Add_user from "./Components/Dashboard_Users/Add_user";
 import User from "./Components/Dashboard_Users/User/User";
 import Table from "./Components/Dashboard_Users/Table/Table";
-import User_Websites from "./Components/Dashboard_Users/User/WebSites/WebSites";
+import User_Websites from "./Components/Dashboard_Users/User/WebSites/Websites";
 import User_Requests from "./Components/Dashboard_Users/User/Requests/Requests";
 // import Dashboard_User_Courses from "./Components/Dashboard_Users/User/Courses/Courses";
 // import Dashboard_User_Requests from "./Components/Dashboard_Users/User/Courses_Requests/Courses_Requests";
 
-import Dashboard_WebSites from "./Components/WebSites/Dashboard_WebSites";
-import Add_WebSite from "./Components/WebSites/Add_WebSite";
-import Current_WebSites from "./Components/WebSites/Current_WebSites";
-import Edit_WebSite from "./Components/WebSites/Edit_WebSite";
+import Dashboard_Websites from "./Components/WebSites/Dashboard_Websites";
+import Add_WebSite from "./Components/WebSites/Add_Website";
+import Current_Websites from "./Components/WebSites/Current_Websites";
+import Edit_WebSite from "./Components/WebSites/Edit_Website";
 
 // import Dashboard_Requests from "./Components/Dashboard_Courses/Dashboard_Courses";
 
@@ -60,7 +60,7 @@ const routes = createBrowserRouter([
                                 element: <Current_Notifications />,
                             },
                             {
-                                path: "/Users/:id/WebSites",
+                                path: "/Users/:id/Websites",
                                 element: <User_Websites />,
                             },
                             {
@@ -68,7 +68,7 @@ const routes = createBrowserRouter([
                                 element: <User_Requests />,
                             },
                             // {
-                            //     path: "/Users/:id/WebSites",
+                            //     path: "/Users/:id/Websites",
                             //     element: <Dashboard_User_Courses />,
                             // },
                             // {
@@ -80,13 +80,13 @@ const routes = createBrowserRouter([
                 ],
             },
             {
-                path: "/WebSites",
-                element: <Dashboard_WebSites />,
+                path: "/Websites",
+                element: <Dashboard_Websites />,
                 children: [
-                    { index: true, element: <Current_WebSites /> },
-                    { path: "/WebSites/Add", element: <Add_WebSite /> },
+                    { index: true, element: <Current_Websites /> },
+                    { path: "/Websites/Add", element: <Add_WebSite /> },
                     {
-                        path: "/WebSites/:id/Edit",
+                        path: "/Websites/:id/Edit",
                         element: <Edit_WebSite />,
                     },
                 ],

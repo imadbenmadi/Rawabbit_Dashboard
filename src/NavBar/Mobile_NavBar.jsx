@@ -43,14 +43,14 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                             <div>Dashboard</div>
                         </Link>
                         <Link
-                            to={"/WebSites"}
+                            to={"/Websites"}
                             onClick={() => SetOpenNav(false)}
                             className={`select-none flex items-center gap-1 cursor-pointer ${
-                                Active_nav == "WebSites" && "text-green"
+                                Active_nav == "Websites" && "text-green"
                             }`}
                         >
                             <TbWorld />
-                            <div>WebSites</div>
+                            <div>Websites</div>
                         </Link>
                         <Link
                             to={`/Users`}
@@ -92,10 +92,10 @@ function Navbar({ Active_nav, setActive_nav, openNav, SetOpenNav, userId }) {
                         <MdSpaceDashboard />
                     </Link>
                     <Link
-                        to={"/WebSites"}
+                        to={"/Websites"}
                         onClick={() => SetOpenNav(false)}
                         className={`select-none flex items-center gap-1 cursor-pointer ${
-                            Active_nav == "WebSites" && "text-green"
+                            Active_nav == "Websites" && "text-green"
                         }`}
                     >
                         <TbWorld />

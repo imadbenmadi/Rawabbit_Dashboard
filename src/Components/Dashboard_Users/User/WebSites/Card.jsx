@@ -6,7 +6,7 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import swal from "sweetalert2";
 import axios from "axios";
-function Card({ Service }) {
+function Card({ WebSite }) {
     const [user, setUser] = useOutletContext();
     if (!user) return null;
     const userId = user._id;
@@ -16,27 +16,27 @@ function Card({ Service }) {
     function toggleDescription() {
         setShowDescription(!showDescription);
     }
-    async function handle_delete_Service(Service) {
+    async function handle_delete_WebSite(WebSite) {
         try {
             setDeleteLoading(true);
             const response = await axios.delete(
-                `http://localhost:3000/Dashboard/Users/${userId}/Services/${Service._id}`,
+                `http://localhost:3000/Dashboard/Users/${userId}/Websites/${WebSite._id}`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,
                 }
             );
             if (response.status == 200) {
-                swal.fire("Service Deleted Successfully", "", "success");
+                swal.fire("WebSite Deleted Successfully", "", "success");
                 setUser((prevUser) => ({
                     ...prevUser,
-                    Services: prevUser.Services.filter(
-                        (c) => c._id !== Service._id
+                    Websites: prevUser.Websites.filter(
+                        (c) => c._id !== WebSite._id
                     ),
                 }));
             } else if (response.status == 404) {
                 swal.fire(
-                    " Service Not found ",
+                    " WebSite Not found ",
                     " Refresh the page please",
                     "info"
                 );
@@ -55,14 +55,14 @@ function Card({ Service }) {
                 });
             } else {
                 swal.fire(
-                    "Could not delete Service",
+                    "Could not delete WebSite",
                     `${response.data.message}`,
                     "error"
                 );
             }
         } catch (error) {
             swal.fire(
-                "Could not delete Service",
+                "Could not delete WebSite",
                 "Please Try again Latter",
                 "error"
             );
@@ -77,28 +77,28 @@ function Card({ Service }) {
                     <img
                         className="w-[30%] h-[200px] object-cover"
                         src={img}
-                        alt={Service.Title}
+                        alt={WebSite.Title}
                     />
                     <div className="w-[70%] pl-6 py-4 flex justify-between">
                         <div className="">
-                            {Service.Title && (
+                            {WebSite.Title && (
                                 <p className="font-bold text-xl mb-2 overflow-hidden">
-                                    {Service.Title}
+                                    {WebSite.Title}
                                 </p>
                             )}
-                            {Service.Text && (
+                            {WebSite.Text && (
                                 <p className="text-gray text-base">
-                                    {Service.Text}
+                                    {WebSite.Text}
                                 </p>
                             )}
-                            {Service.Category && (
+                            {WebSite.Category && (
                                 <p className="text-gray font-semibold text-xl pt-4">
-                                    {Service.Category}
+                                    {WebSite.Category}
                                 </p>
                             )}
-                            {Service.Price && (
+                            {WebSite.Price && (
                                 <div className="text-gray pt-4  text-xl font-semibold top-10 right-5 ">
-                                    {Service.Price} DA
+                                    {WebSite.Price} DA
                                 </div>
                             )}
                         </div>
@@ -113,9 +113,9 @@ function Card({ Service }) {
                             Show Description <FaArrowUp />
                         </div>
                         <div className="pb-4">
-                            {Service.Description && (
+                            {WebSite.Description && (
                                 <p className="text-gray text-base">
-                                    {Service.Description}
+                                    {WebSite.Description}
                                 </p>
                             )}
                         </div>
@@ -141,7 +141,7 @@ function Card({ Service }) {
                         className="flex items-center justify-start gap-2 cursor-pointer text-white bg-red-600 text-xl px-2 py-1 rounded w-[100px]"
                         onClick={() => {
                             swal.fire({
-                                title: "Are you sure you want to delete this Service from this user ?",
+                                title: "Are you sure you want to delete this WebSite from this user ?",
                                 text: "You won't be able to revert this!",
                                 icon: "warning",
                                 showCancelButton: true,
@@ -150,7 +150,7 @@ function Card({ Service }) {
                                 confirmButtonText: "Yes Delete it",
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    handle_delete_Service(Service);
+                                    handle_delete_WebSite(WebSite);
                                 }
                             });
                         }}

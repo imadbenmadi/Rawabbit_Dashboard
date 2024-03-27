@@ -4,9 +4,8 @@ import { IoIosNotifications } from "react-icons/io";
 import { IoNewspaper } from "react-icons/io5";
 import { FaBook, FaUser } from "react-icons/fa";
 import { FaHandshake } from "react-icons/fa";
-import logo from "../../../public/Logo.png"
+import logo from "../../../public/Logo.png";
 function Dashboard_Home() {
-
     // if (!user)
     //     return (
     //         <div className="w-full h-screen flex items-center justify-center">

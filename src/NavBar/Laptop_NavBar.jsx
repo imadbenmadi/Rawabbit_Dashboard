@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 import { MdSpaceDashboard } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
-
 function Laptop_NavBar({ Active_nav, setActive_nav }) {
     const Navigate = useNavigate();
     const location = useLocation();
@@ -39,13 +38,13 @@ function Laptop_NavBar({ Active_nav, setActive_nav }) {
                     <div>Dashboard</div>
                 </Link>
                 <Link
-                    to={"/WebSites"}
+                    to={"/Websites"}
                     className={`select-none flex items-center gap-3 cursor-pointer ${
-                        Active_nav == "WebSites" && "text-green"
+                        Active_nav == "Websites" && "text-green"
                     }`}
                 >
                     <TbWorld />
-                    <div>WebSites</div>
+                    <div>Websites</div>
                 </Link>
                 <Link
                     to={"/Users"}

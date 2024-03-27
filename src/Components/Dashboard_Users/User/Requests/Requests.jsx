@@ -16,7 +16,7 @@ function Requests_Requests() {
         try {
             setLoading(true);
             const response = await axios.get(
-                `http://localhost:3000/Dashboard/Users/${user._id}/Requests/Requests`,
+                `http://localhost:3000/Dashboard/Requests/${user._id}`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,

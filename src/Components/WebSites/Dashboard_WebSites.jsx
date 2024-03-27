@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-function Dashboard_WebSites() {
+function Dashboard_Websites() {
     return <Outlet />;
 }
 
-export default Dashboard_WebSites;
+export default Dashboard_Websites;

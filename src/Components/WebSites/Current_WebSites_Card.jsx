@@ -5,7 +5,7 @@ import swal from "sweetalert2";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-function Current_WebSites_Card({ item, onDelete }) {
+function Current_Websites_Card({ item, onDelete }) {
     const [showDescription, setShowDescription] = useState(false);
     const Navigate = useNavigate();
     function toggleDescription() {
@@ -15,7 +15,7 @@ function Current_WebSites_Card({ item, onDelete }) {
         try {
             const response = await axios.delete(
                 `http://localhost:3000/Dashboard/
-            WebSites
+            Websites
         /${course._id}`,
                 {
                     withCredentials: true,
@@ -67,7 +67,7 @@ function Current_WebSites_Card({ item, onDelete }) {
                     <img
                         className="md:w-[30%] md:h-[200px] object-cover"
                         src={`http://localhost:3000/
-                    WebSites
+                    Websites
                 /${item.Image}`}
                         alt={item.Title}
                     />
@@ -96,7 +96,7 @@ function Current_WebSites_Card({ item, onDelete }) {
                 </div>
                 <div className="flex justify-center gap-6 md:hidden">
                     <Link
-                        to={`/WebSites
+                        to={`/Websites
                 /${item._id}/Edit`}
                         className="select-none flex items-center justify-start md:gap-2 text-white text-xl bg-green px-1 md:px-2  py-1 rounded md:w-[100px]"
                     >
@@ -154,7 +154,7 @@ function Current_WebSites_Card({ item, onDelete }) {
             <div className="w-[10%] hidden md:flex flex-col items-center justify-start pt-6 gap-4 pr-5">
                 <Link
                     to={`/
-                WebSites
+                Websites
             /${item._id}/Edit`}
                     className="select-none flex items-center justify-start md:gap-2 text-white text-xl bg-green px-1 md:px-2  py-1 rounded md:w-[100px]"
                 >
@@ -186,4 +186,4 @@ function Current_WebSites_Card({ item, onDelete }) {
     );
 }
 
-export default Current_WebSites_Card;
+export default Current_Websites_Card;

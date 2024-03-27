@@ -1,12 +1,12 @@
 import { IoWarning } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
-import Current_WebSites_Card from "./Current_WebSites_Card";
+import Current_Websites_Card from "./Current_Websites_Card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ErrorPage from "../ErrorPage";
 import Search from "./Search";
-function Current_WebSites() {
+function Current_Websites() {
     const [Courses, setCourses] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -95,7 +95,7 @@ function Current_WebSites() {
                 <div>
                     {!search &&
                         Courses.map((Course, index) => (
-                            <Current_WebSites_Card
+                            <Current_Websites_Card
                                 item={Course}
                                 key={index}
                                 onDelete={() => handleDeleteCourse(Course._id)}
@@ -108,7 +108,7 @@ function Current_WebSites() {
                                 search.toLowerCase()
                             )
                         ).map((Course, index) => (
-                            <Current_WebSites_Card
+                            <Current_Websites_Card
                                 item={Course}
                                 key={index}
                                 onDelete={() => handleDeleteCourse(Course._id)}
@@ -133,4 +133,4 @@ function Current_WebSites() {
     }
 }
 
-export default Current_WebSites;
+export default Current_Websites;
