@@ -56,12 +56,12 @@ function Add_user() {
                                 "Last Name must be more than 3 chars ";
                         if (!values.Telephone) {
                             errors.Telephone = "Telephone number is required";
-                        } else if (
-                            !/^(0)(5|6|7)[0-9]{8}$/.test(values.Telephone)
-                        ) {
-                            errors.Telephone = "Invalid Telephone number";
                         }
-                        // Validate Email
+                        // else if (
+                        //     !/^(0)(5|6|7)[0-9]{8}$/.test(values.Telephone)
+                        // ) {
+                        //     errors.Telephone = "Invalid Telephone number";
+                        // }
                         if (!values.Email) {
                             errors.Email = "email is Required";
                         } else if (

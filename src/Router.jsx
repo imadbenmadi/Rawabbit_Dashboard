@@ -81,6 +81,10 @@ const routes = createBrowserRouter([
                     },
                 ],
             },
+            {
+                path: "*",
+                element: <Not_Found />,
+            },
             // {
             //     path: "/Requests",
             //     element: <Dashboard_Requests />,
