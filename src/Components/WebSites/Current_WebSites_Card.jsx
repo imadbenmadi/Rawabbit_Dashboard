@@ -20,14 +20,13 @@ function Current_Websites_Card({ item, onDelete }) {
     async function handle_delete_Website(Website) {
         try {
             const response = await axios.delete(
-                `http://localhost:3000/Dashboard/
-            Websites
-        /${Website._id}`,
+                `http://localhost:3000/Dashboard/Websites/${Website._id}`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,
                 }
             );
+            console.log(response);
             if (response.status == 200) {
                 onDelete();
                 swal.fire("Website Deleted Successfully", "", "success");

@@ -32,7 +32,6 @@ function Edit_WebSite() {
                 }
             );
             console.log(response.data);
-            console.log(Website_id);
             if (response.status == 200) {
                 setWebsite(response.data);
             } else {
@@ -130,6 +129,7 @@ function Edit_WebSite() {
                             try {
                                 setSubmitting(true);
                                 const formData = new FormData();
+                                formData.append("Link", values.Link);
                                 formData.append("Title", values.Title);
                                 formData.append("Text", values.Text);
                                 formData.append(
@@ -279,17 +279,18 @@ function Edit_WebSite() {
                                                 </div>
                                             </div>
                                         ) : (
-                                            setImageUrl(values.image)
-                                            // <div
-                                            //     className="w-full h-[200px] md:w-80 md:h-80 bg-gray_white text-gray rounded flex items-center justify-center cursor-pointer"
-                                            //     onClick={() =>
-                                            //         document
-                                            //             .getElementById("image")
-                                            //             .click()
-                                            //     }
-                                            // >
-                                            //     <FaRegImage />
-                                            // </div>
+                                            // null
+                                            // setImageUrl(values.image)
+                                            <div
+                                                className="w-full h-[200px] md:w-80 md:h-80 bg-gray_white text-gray rounded flex items-center justify-center cursor-pointer"
+                                                onClick={() =>
+                                                    document
+                                                        .getElementById("image")
+                                                        .click()
+                                                }
+                                            >
+                                                <FaRegImage />
+                                            </div>
                                         )}{" "}
                                         <div
                                             className="flex items-center justify-start md:gap-2 cursor-pointer text-white bg-red-600  text-lg md:text-xl px-1 md:px-2 py-1 rounded "
