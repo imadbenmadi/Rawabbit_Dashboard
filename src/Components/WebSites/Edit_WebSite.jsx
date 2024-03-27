@@ -16,23 +16,25 @@ import { FaRegImage } from "react-icons/fa";
 function Edit_WebSite() {
     const Navigate = useNavigate();
     const location = useLocation();
-    const Course_id = location.pathname.split("/")[2];
-    const [Course, setCourse] = useState(null);
+    const Website_id = location.pathname.split("/")[2];
+    const [Website, setWebsite] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
-    const fetch_Course = async () => {
+    const fetch_Website = async () => {
         setLoading(true);
         try {
             const response = await axios.get(
-                `http://localhost:3000/Courses/${Course_id}`,
+                `http://localhost:3000/Websites/${Website_id}`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,
                 }
             );
+            console.log(response.data);
+            console.log(Website_id);
             if (response.status == 200) {
-                setCourse(response.data);
+                setWebsite(response.data);
             } else {
                 setError(response.data);
             }
@@ -43,7 +45,7 @@ function Edit_WebSite() {
         }
     };
     useEffect(() => {
-        fetch_Course();
+        fetch_Website();
     }, []);
     if (loading)
         return (
@@ -53,12 +55,12 @@ function Edit_WebSite() {
         );
     else if (error) {
         return <ErrorPage />;
-    } else if (!Course)
+    } else if (!Website)
         return (
             <>
                 <Link
                     className="select-none bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 w-fit m-auto"
-                    to={"/Courses"}
+                    to={"/Websites"}
                 >
                     <>
                         <FaArrowLeft />
@@ -70,7 +72,7 @@ function Edit_WebSite() {
                      m-auto mt-10 bg-white rounded-md shadow-lg text-center"
                 >
                     <IoWarning className="text-red-500 text-4xl " />
-                    <p className="text-xl text-gray">Course Not Found</p>
+                    <p className="text-xl text-gray">Website Not Found</p>
                 </div>
             </>
         );
@@ -79,7 +81,7 @@ function Edit_WebSite() {
             <div className=" ">
                 <Link
                     className="select-none bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 w-fit m-auto"
-                    to={"/Courses"}
+                    to={"/Websites"}
                 >
                     <>
                         <FaArrowLeft />
@@ -90,14 +92,15 @@ function Edit_WebSite() {
                 <div className="border border-gray_white text-black_text shadow-md w-[80%] md:w-[98%] m-auto mt-3 p-5 rounded-lg">
                     <Formik
                         initialValues={{
-                            // CourseId: Course._id || "",
-                            Title: Course.Title || "",
-                            Text: Course.Text || "",
-                            Description: Course.Description || "",
-                            Price: Course.Price || "",
-                            Category: Course.Category || "",
+                            // WebsiteId: Website._id || "",
+                            Link: Website.Link || "",
+                            Title: Website.Title || "",
+                            Text: Website.Text || "",
+                            Description: Website.Description || "",
+                            Price: Website.Price || "",
+                            Category: Website.Category || "",
                             image:
-                                `http://localhost:3000/Courses/${Course.Image}` ||
+                                `http://localhost:3000/Websites/${Website.Image}` ||
                                 null,
                         }}
                         validate={(values) => {
@@ -105,16 +108,15 @@ function Edit_WebSite() {
                             if (!values.Title) {
                                 errors.Title = "Title is required.";
                             }
+                            if (!values.Link) {
+                                errors.Link = "Link is required.";
+                            }
                             if (!values.Text) {
                                 errors.Text = "Text is required.";
                             }
                             if (!values.Description) {
                                 errors.Description = "Description is required.";
                             }
-                            if (!values.Price) {
-                                errors.Price = "Price is required.";
-                            } else if (isNaN(values.Price))
-                                errors.Price = "Invalid Price";
 
                             if (!values.Category) {
                                 errors.Category = "Category is required.";
@@ -138,13 +140,14 @@ function Edit_WebSite() {
                                 formData.append("Category", values.Category);
                                 formData.append("image", values.image);
                                 let response = await Axios.put(
-                                    `http://localhost:3000/Dashboard/Courses/${Course_id}`,
+                                    `http://localhost:3000/Dashboard/Websites/${Website_id}`,
                                     formData,
                                     {
                                         withCredentials: true,
                                         validateStatus: () => true,
                                     }
                                 );
+                                console.log(response.data);
                                 setSubmitting(false);
                                 if (response.status == 404) {
                                     Swal.fire(
@@ -155,7 +158,7 @@ function Edit_WebSite() {
                                 } else if (response.status == 200) {
                                     Swal.fire(
                                         "Done!",
-                                        "Course has been Modified Successfully",
+                                        "Website has been Modified Successfully",
                                         "success"
                                     );
                                 } else if (response.status == 400) {
@@ -306,6 +309,25 @@ function Edit_WebSite() {
                                 </div>
                                 <div className=" w-full ">
                                     <div>
+                                        Link{" "}
+                                        <span className="text-red-600 font-semibold">
+                                            *
+                                        </span>
+                                    </div>
+                                    <Field
+                                        type="text"
+                                        name="Link"
+                                        className="border border-gray_white px-2 py-1 rounded shadow w-full overflow-auto custom-overflow"
+                                        disabled={isSubmitting}
+                                    />
+                                    <ErrorMessage
+                                        name="Link"
+                                        component="div"
+                                        style={errorInputMessage}
+                                    />
+                                </div>
+                                <div className=" w-full ">
+                                    <div>
                                         Title{" "}
                                         <span className="text-red-600 font-semibold">
                                             *
@@ -364,25 +386,6 @@ function Edit_WebSite() {
                                     />
                                 </div>
                                 <div className=" flex gap-4 w-full">
-                                    <div className=" w-[180px] h-fit ">
-                                        <div>
-                                            Price{" "}
-                                            <span className="text-red-600 font-semibold">
-                                                *
-                                            </span>
-                                        </div>
-                                        <Field
-                                            type="text"
-                                            name="Price"
-                                            className="border border-gray_white px-2 py-1 rounded shadow w-full "
-                                            disabled={isSubmitting}
-                                        />
-                                        <ErrorMessage
-                                            name="Price"
-                                            component="div"
-                                            style={errorInputMessage}
-                                        />
-                                    </div>
                                     <div className=" w-[280px] h-fit ">
                                         <div>
                                             Category{" "}
