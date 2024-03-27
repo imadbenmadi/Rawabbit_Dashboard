@@ -15,6 +15,7 @@ import Current_Notifications from "./Components/Dashboard_Users/User/Notificatio
 import Add_user from "./Components/Dashboard_Users/Add_user";
 import User from "./Components/Dashboard_Users/User/User";
 import Table from "./Components/Dashboard_Users/Table/Table";
+import User_Websites from "./Components/Dashboard_Users/User/WebSites/WebSites";
 // import Dashboard_User_Courses from "./Components/Dashboard_Users/User/Courses/Courses";
 // import Dashboard_User_Requests from "./Components/Dashboard_Users/User/Courses_Requests/Courses_Requests";
 
@@ -56,6 +57,14 @@ const routes = createBrowserRouter([
                             {
                                 path: "/Users/:id/Current_Notifications",
                                 element: <Current_Notifications />,
+                            },
+                            {
+                                path: "/Users/:id/WebSites",
+                                element: <User_Websites />,
+                            },
+                            {
+                                path: "/Users/:id/Requests",
+                                element: <Not_Finished />,
                             },
                             // {
                             //     path: "/Users/:id/WebSites",

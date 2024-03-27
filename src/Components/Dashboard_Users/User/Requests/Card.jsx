@@ -1,47 +1,36 @@
-import { useOutletContext } from "react-router";
-import img from "../../../../../public/wallpaper.jpg";
-import { useNavigate } from "react-router";
-import { useState } from "react";
-import { FaArrowDown, FaArrowUp } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import swal from "sweetalert2";
 import axios from "axios";
-function Card({ Service }) {
-    const [user, setUser] = useOutletContext();
-    if (!user) return null;
-    const userId = user._id;
-    const [deleteLoading, setDeleteLoading] = useState(false);
-    const [showDescription, setShowDescription] = useState(false);
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
+
+import { useState } from "react";
+function Card({ request, onDelete }) {
     const Navigate = useNavigate();
-    function toggleDescription() {
-        setShowDescription(!showDescription);
-    }
-    async function handle_delete_Service(Service) {
+    const [Accept_Loading, setAccept_Loading] = useState(false);
+    const [Reject_Loading, setReject_Loading] = useState(false);
+    async function handle_accept_request(UserId, ServiceId) {
         try {
-            setDeleteLoading(true);
-            const response = await axios.delete(
-                `http://localhost:3000/Dashboard/Users/${userId}/Services/${Service._id}`,
+            setAccept_Loading(true);
+            const response = await axios.post(
+                "http://localhost:3000/Dashboard/Services/Requests/Accept",
+                { UserId, ServiceId },
                 {
                     withCredentials: true,
                     validateStatus: () => true,
                 }
             );
             if (response.status == 200) {
-                swal.fire("Service Deleted Successfully", "", "success");
-                setUser((prevUser) => ({
-                    ...prevUser,
-                    Services: prevUser.Services.filter(
-                        (c) => c._id !== Service._id
-                    ),
-                }));
+                onDelete();
+                Swal.fire({ icon: "success", title: "Request Accepted" });
             } else if (response.status == 404) {
-                swal.fire(
-                    " Service Not found ",
-                    " Refresh the page please",
-                    "info"
+                Swal.fire("Error", `${response.data.message}`, "error");
+            } else if (response.status == 400) {
+                Swal.fire(
+                    "Error!",
+                    `Internal server error : ${response.data.message}`,
+                    "error"
                 );
             } else if (response.status == 401) {
-                swal.fire({
+                Swal.fire({
                     title: "Unauthorised Action",
                     text: "You should Login again ",
                     icon: "error",
@@ -53,114 +42,212 @@ function Card({ Service }) {
                         Navigate("/Dashboard_Login");
                     }
                 });
+            } else if (response.status == 409) {
+                Swal.fire("Error!", `${response.data}`, "error");
+            } else if (response.status == 429) {
+                Swal.fire(
+                    "Error!",
+                    `Too many Requests , ${response.data.message}`,
+                    "error"
+                );
+            } else if (response.status == 500) {
+                Swal.fire(
+                    "Error!",
+                    `Internal server error : ${response.data.message}`,
+                    "error"
+                );
             } else {
-                swal.fire(
-                    "Could not delete Service",
-                    `${response.data.message}`,
+                Swal.fire(
+                    "Error!",
+                    `Something Went Wrong. Please try again , ${response.data.message}`,
                     "error"
                 );
             }
         } catch (error) {
-            swal.fire(
-                "Could not delete Service",
-                "Please Try again Latter",
-                "error"
-            );
+            Swal.fire("Error!", "Failed to Accept the Request.", "error");
         } finally {
-            setDeleteLoading(false);
+            setAccept_Loading(false);
         }
     }
+    async function handle_reject_request(UserId, ServiceId) {
+        try {
+            setReject_Loading(true);
+            const response = await axios.post(
+                "http://localhost:3000/Dashboard/Services/Requests/Reject",
+                { UserId, ServiceId },
+                {
+                    withCredentials: true,
+                    validateStatus: () => true,
+                }
+            );
+
+            if (response.status == 200) {
+                onDelete();
+                Swal.fire({ icon: "success", title: "Request Rejected" });
+            } else if (response.status == 404) {
+                Swal.fire("Error", `${response.data.message}`, "error");
+            } else if (response.status == 400) {
+                Swal.fire(
+                    "Error!",
+                    `Internal server error : ${response.data.message}`,
+                    "error"
+                );
+            } else if (response.status == 401) {
+                Swal.fire({
+                    title: "Unauthorised Action",
+                    text: "You should Login again ",
+                    icon: "error",
+                    confirmButtonColor: "#3085d6",
+
+                    confirmButtonText: "Go to Admin Login Page",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Navigate("/Dashboard_Login");
+                    }
+                });
+            } else if (response.status == 409) {
+                Swal.fire("Error!", `${response.data}`, "error");
+            } else if (response.status == 429) {
+                Swal.fire(
+                    "Error!",
+                    `Too many Requests , ${response.data.message}`,
+                    "error"
+                );
+            } else if (response.status == 500) {
+                Swal.fire(
+                    "Error!",
+                    `Internal server error : ${response.data.message}`,
+                    "error"
+                );
+            } else {
+                Swal.fire(
+                    "Error!",
+                    `Something Went Wrong. Please try again , ${response.data.message}`,
+                    "error"
+                );
+            }
+        } catch (error) {
+            Swal.fire("Error!", "Failed to Reject the Request", "error");
+        } finally {
+            setReject_Loading(false);
+        }
+    }
+
     return (
-        <div className="w-full flex justify-between border-b-4 border-b-gray_white">
-            <div className=" w-full">
-                <div className="relative overflow-hidden py-5 px-5 flex shrink-0 justify-start h-fit">
-                    <img
-                        className="w-[30%] h-[200px] object-cover"
-                        src={img}
-                        alt={Service.Title}
-                    />
-                    <div className="w-[70%] pl-6 py-4 flex justify-between">
-                        <div className="">
-                            {Service.Title && (
-                                <p className="font-bold text-xl mb-2 overflow-hidden">
-                                    {Service.Title}
-                                </p>
-                            )}
-                            {Service.Text && (
-                                <p className="text-gray text-base">
-                                    {Service.Text}
-                                </p>
-                            )}
-                            {Service.Category && (
-                                <p className="text-gray font-semibold text-xl pt-4">
-                                    {Service.Category}
-                                </p>
-                            )}
-                            {Service.Price && (
-                                <div className="text-gray pt-4  text-xl font-semibold top-10 right-5 ">
-                                    {Service.Price} DA
-                                </div>
-                            )}
+        <tr
+            key={request._id}
+            className="bg-gray_white hover:bg-white cursor-pointer h-[40px] text-center"
+        >
+            <td
+                style={{ maxWidth: "180px" }}
+                className="w-[180px] whitespace-nowrap border overflow-auto scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-green scrollbar-track-slate-300"
+            >
+                {request.User.FirstName !== undefined
+                    ? request.User.FirstName
+                    : "none"}{" "}
+                {request.User.LastName ? request.User.LastName : "none"}
+            </td>
+            <td
+                style={{ maxWidth: "90px" }}
+                className="w-[90px] whitespace-nowrap break-words border overflow-auto scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-green scrollbar-track-slate-300"
+            >
+                {request.User.Telephone ? request.User.Telephone : "none"}
+            </td>
+            <td
+                style={{ maxWidth: "150px" }}
+                className="w-[150px] whitespace-nowrap border overflow-auto scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-green scrollbar-track-slate-300"
+            >
+                {request.User.Email ? request.User.Email : "none"}
+            </td>
+            <td
+                style={{ maxWidth: "90px" }}
+                className={`w-[90px] whitespace-nowrap border overflow-auto scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-green scrollbar-track-slate-300 ${
+                    request.User.IsEmailVerified ? "text-green" : "text-red-600"
+                }`}
+            >
+                {request.User.IsEmailVerified ? "Verified" : "Not Verified"}
+            </td>
+
+            <td
+                style={{ maxWidth: "150px" }}
+                className="w-[150px] whitespace-nowrap border overflow-auto scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-green scrollbar-track-slate-300"
+            >
+                {request.Service.Title ? request.Service.Title : "none"}
+            </td>
+            <td
+                style={{ maxWidth: "70px" }}
+                className="w-[70px] whitespace-nowrap border overflow-auto scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-green scrollbar-track-slate-300"
+            >
+                {request.Service.Price ? request.Service.Price + " DA" : "none"}
+            </td>
+            <td
+                style={{ maxWidth: "150px" }}
+                className="w-[150px] whitespace-nowrap border overflow-auto 
+                                scrollbar-thumb-rounded-full scrollbar-thin scrollbar-thumb-green scrollbar-track-slate-300
+                                "
+            >
+                <div className="flex  justify-center gap-1 items-center m-auto ">
+                    {!Accept_Loading ? (
+                        <div
+                            className="w-fit items-center m-auto flex gap-1 bg-green text-white p-1 rounded"
+                            onClick={() =>
+                                Swal.fire({
+                                    title: "Are you sure you want to Accept this Request ?",
+                                    text: "You won't be able to revert this!",
+                                    icon: "warning",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#3085d6",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "Yes, accept it!",
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        handle_accept_request(
+                                            request.User._id,
+                                            request.Service._id
+                                        );
+                                    }
+                                })
+                            }
+                        >
+                            Accept
                         </div>
-                    </div>
+                    ) : (
+                        <div className="w-fit items-center m-auto flex gap-1 bg-green opacity-50 text-white p-1 rounded">
+                            Loading
+                        </div>
+                    )}
+                    {!Reject_Loading ? (
+                        <div
+                            className="w-fit items-center m-auto flex gap-1 bg-red-600 text-white p-1 rounded"
+                            onClick={() =>
+                                Swal.fire({
+                                    title: "Are you sure you want to Reject this Request ?",
+                                    text: "You won't be able to revert this!",
+                                    icon: "warning",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#3085d6",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "Yes, reject it!",
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        handle_reject_request(
+                                            request.User._id,
+                                            request.Service._id
+                                        );
+                                    }
+                                })
+                            }
+                        >
+                            Reject
+                        </div>
+                    ) : (
+                        <div className="w-fit items-center m-auto flex gap-1 bg-red-600 opacity-50 text-white p-1 rounded">
+                            Loading
+                        </div>
+                    )}
                 </div>
-                {showDescription ? (
-                    <div className="w-[80%] pl-8 pb-4">
-                        <div
-                            className="flex gap-2 items-center justify-start underlined pb-4 cursor-pointer"
-                            onClick={toggleDescription}
-                        >
-                            Show Description <FaArrowUp />
-                        </div>
-                        <div className="pb-4">
-                            {Service.Description && (
-                                <p className="text-gray text-base">
-                                    {Service.Description}
-                                </p>
-                            )}
-                        </div>
-                    </div>
-                ) : (
-                    <div className="w-[80%] pl-8 pb-4">
-                        <div
-                            className="flex gap-2 items-center justify-start underlined pb-4 cursor-pointer"
-                            onClick={toggleDescription}
-                        >
-                            Show Description <FaArrowDown />
-                        </div>
-                    </div>
-                )}
-            </div>
-            <div className="w-[10%] flex flex-col items-center justify-start pt-6 gap-4 pr-5">
-                {deleteLoading ? (
-                    <div className="flex items-center justify-start gap-2 cursor-pointer text-white bg-red-600 opacity-50 text-xl px-2 py-1 rounded w-[100px]">
-                        Loading
-                    </div>
-                ) : (
-                    <div
-                        className="flex items-center justify-start gap-2 cursor-pointer text-white bg-red-600 text-xl px-2 py-1 rounded w-[100px]"
-                        onClick={() => {
-                            swal.fire({
-                                title: "Are you sure you want to delete this Service from this user ?",
-                                text: "You won't be able to revert this!",
-                                icon: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "red",
-                                cancelButtonColor: "green",
-                                confirmButtonText: "Yes Delete it",
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    handle_delete_Service(Service);
-                                }
-                            });
-                        }}
-                    >
-                        <MdDelete />
-                        Delete
-                    </div>
-                )}
-            </div>
-        </div>
+            </td>
+        </tr>
     );
 }
 

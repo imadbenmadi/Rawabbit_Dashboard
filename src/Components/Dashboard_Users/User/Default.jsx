@@ -12,6 +12,8 @@ import { FaMessage } from "react-icons/fa6";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { useState, useEffect } from "react";
 import ErrorPage from "../../../Components/ErrorPage";
+import { TbWorld } from "react-icons/tb";
+import { IoIosPaper } from "react-icons/io";
 function Default() {
     const [userData, setUserData] = useState(null);
     const [user, setUser] = useOutletContext();
@@ -224,44 +226,20 @@ function Default() {
                     </div>
 
                     <div className="flex gap-2 md:gap-10 pt-10 justify-center text-lg md:text-xl text-center">
-                        <div>
+                        <div className=" flex flex-col">
                             <Link
-                                to={"/Users/" + userId + "/Courses"}
-                                className="select-none flex items-center mb-7 justify-center cursor-pointer gap-1 bg-gray text-white px-3 py-1 rounded"
+                                to={"/Users/" + userId + "/Websites"}
+                                className="select-none flex items-center mb-7 justify-center cursor-pointer gap-1 bg-green text-white px-3 py-2 rounded"
                             >
-                                {/* <IoIosNotifications /> */}
-                                User Courses
+                                <TbWorld className=" text-3xl" />
+                                User Websites
                             </Link>
                             <Link
-                                to={
-                                    "/Users/" +
-                                    userId +
-                                    "/Courses_Requests"
-                                }
-                                className="select-none flex items-center justify-center cursor-pointer gap-1 bg-gray text-white px-3 py-1 rounded"
+                                to={"/Users/" + userId + "/Requests"}
+                                className="select-none flex items-center mb-7 justify-center cursor-pointer gap-1 bg-green text-white px-3 py-2 rounded"
                             >
-                                {/* <IoIosNotifications /> */}
-                                User Courses Requests
-                            </Link>
-                        </div>
-                        <div>
-                            <Link
-                                to={"/Users/" + userId + "/Services"}
-                                className="select-none flex items-center justify-center mb-7 gap-1 bg-gray text-white px-3 py-1 rounded"
-                            >
-                                {/* <FaPen /> */}
-                                User Services
-                            </Link>
-                            <Link
-                                to={
-                                    "/Users/" +
-                                    userId +
-                                    "/Services_Requests"
-                                }
-                                className="select-none flex items-center justify-center gap-1 bg-gray text-white px-3 py-1 rounded"
-                            >
-                                {/* <FaPen /> */}
-                                User Services Requests
+                                <IoIosPaper className=" text-3xl" />
+                                User Requests
                             </Link>
                         </div>
                     </div>

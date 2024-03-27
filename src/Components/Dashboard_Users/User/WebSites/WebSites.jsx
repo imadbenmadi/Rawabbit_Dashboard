@@ -3,13 +3,13 @@ import { IoWarning } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import Card from "./Card";
-function Requests() {
+function WebSites() {
     const [user, setUser] = useOutletContext();
     if (!user) return null;
     const userId = user._id;
 
-    if (user.Requests && Array.isArray(user.Requests)) {
-        if (user.Requests.length === 0)
+    if (user.WebSites && Array.isArray(user.WebSites)) {
+        if (user.WebSites.length === 0)
             return (
                 <div className="pt-4 ">
                     <Link
@@ -22,7 +22,7 @@ function Requests() {
                     <div className=" flex text-gray items-center justify-center text-2xl pt-4 gap-2  ">
                         <IoWarning className=" text-2xl" />
                         <div className="text-center text-gray">
-                            No Requests Owned by this user
+                            No WebSites Owned by this user
                         </div>
                     </div>
                 </div>
@@ -38,10 +38,10 @@ function Requests() {
                         <div>Back to user</div>
                     </Link>
                     <div className=" text-2xl pl-4 text-gray underline">
-                        Enrolled Requests
+                        Enrolled WebSites
                     </div>
-                    {user.Requests.map((Request, index) => (
-                        <Card Request={Request} index={index} />
+                    {user.WebSites.map((WebSite, index) => (
+                        <Card WebSite={WebSite} index={index} />
                     ))}
                 </div>
             );
@@ -59,11 +59,11 @@ function Requests() {
             <div className=" flex text-gray items-center gap-2 pt-4 ">
                 <IoWarning className=" text-2xl" />
                 <div className="text-center text-gray">
-                    No Requests Owned by this user
+                    No WebSite is Owned by this user
                 </div>
             </div>
         </>
     );
 }
 
-export default Requests;
+export default WebSites;

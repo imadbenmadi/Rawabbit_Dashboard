@@ -1,7 +1,7 @@
 import { IoWarning } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ErrorPage from "../../../../Components/ErrorPage";
+import ErrorPage from "../../../ErrorPage";
 import { useOutletContext } from "react-router";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
