@@ -10,10 +10,10 @@ import { IoClose } from "react-icons/io5";
 function Add_WebSite() {
     const Navigate = useNavigate();
     return (
-        <div className=" ">
+        <div className=" pt-4">
             <Link
                 className="select-none bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 w-fit m-auto"
-                to={"/Courses"}
+                to={"/Websites"}
             >
                 <>
                     <FaArrowLeft />
@@ -45,12 +45,7 @@ function Add_WebSite() {
                         if (!values.Description) {
                             errors.Description = "Description is required.";
                         }
-                        // Validate Price
-                        if (!values.Price) {
-                            errors.Price = "Price is required.";
-                        } else if (isNaN(values.Price))
-                            errors.Price = "Invalid Price";
-
+                        
                         // Validate Category
                         if (!values.Category) {
                             errors.Category = "Category is required.";
@@ -67,22 +62,22 @@ function Add_WebSite() {
                             formData.append("Title", values.Title);
                             formData.append("Text", values.Text);
                             formData.append("Description", values.Description);
-                            formData.append("Price", values.Price);
                             formData.append("Category", values.Category);
                             formData.append("image", values.image);
                             let response = await Axios.post(
-                                "http://localhost:3000/Dashboard/Courses",
+                                "http://localhost:3000/Dashboard/Websites",
                                 formData,
                                 {
                                     withCredentials: true,
                                     validateStatus: () => true,
                                 }
                             );
+                            console.log(response.data);
                             if (response.status == 200) {
                                 resetForm();
                                 Swal.fire(
                                     "Done!",
-                                    "Course has been created Successfully",
+                                    "Website has been created Successfully",
                                     "success"
                                 );
                             } else if (response.status == 404) {
@@ -138,7 +133,7 @@ function Add_WebSite() {
                         } catch (error) {
                             Swal.fire(
                                 "Error!",
-                                "Failed to add Course.",
+                                "Failed to add Website.",
                                 "error"
                             );
                         } finally {
@@ -273,7 +268,7 @@ function Add_WebSite() {
                                 />
                             </div>
                             <div className=" flex gap-4 w-full">
-                                <div className=" w-[180px] h-fit ">
+                                {/* <div className=" w-[180px] h-fit ">
                                     <div>
                                         Price{" "}
                                         <span className="text-red-600 font-semibold">
@@ -291,7 +286,7 @@ function Add_WebSite() {
                                         component="div"
                                         style={errorInputMessage}
                                     />
-                                </div>
+                                </div> */}
                                 <div className=" w-[280px] h-fit ">
                                     <div>
                                         Category{" "}

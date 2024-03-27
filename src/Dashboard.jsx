@@ -87,7 +87,7 @@ function Dashboard() {
                                 setActive_nav={setActive_nav}
                             />
                         </div>
-                        <div className="w-[80%]   h-screen overflow-auto custom-overflow  ">
+                        <div className="w-[80%] pt-6  h-screen overflow-auto custom-overflow  ">
                             <Outlet />
                         </div>
                     </>

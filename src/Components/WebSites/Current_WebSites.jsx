@@ -6,12 +6,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ErrorPage from "../ErrorPage";
 import Search from "./Search";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { IoAdd } from "react-icons/io5";
+
+
 function Current_Websites() {
     const [Websites, setWebsites] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState("");
-
+    useEffect(() => {
+        console.log(Websites);
+    }, [Websites]);
     const fetch_Websites = async () => {
         setLoading(true);
         try {
@@ -19,8 +25,9 @@ function Current_Websites() {
                 withCredentials: true,
                 validateStatus: () => true,
             });
+            console.log(response.data);
             if (response.status == 200) {
-                setWebsites(response.data.Websites);
+                setWebsites(response.data);
             } else {
                 setError(response.data);
             }
@@ -47,8 +54,23 @@ function Current_Websites() {
     if (error) {
         return <ErrorPage />;
     }
-    if (!Websites) return null;
-    else if (Websites.length === 0)
+    // if (!Websites)
+    //     return (
+    //         <div className=" pt-4">
+    //             <Link
+    //                 to={`/Websites/Add`}
+    //                 className="select-none mb-4 w-fit m-auto bg-green rounded cursor-pointer text-white text-xl flex items-center gap-2 px-3 py-1 "
+    //             >
+    //                 <IoAdd  className=" font-bold text-3xl"/>
+    //                 <div>Add WebSite</div>
+    //             </Link>
+    //             <div className=" flex justify-center items-center gap-1 text-2xl text-gray pt-8">
+    //                 <IoWarning />
+    //                 No Website Found
+    //             </div>
+    //         </div>
+    //     );
+    else if (!Websites || Websites.length === 0)
         return (
             <div className=" flex items-center justify-center gap-4 flex-col">
                 <div className="pl-4 text-gray font-semibold  text-2xl w-full">
@@ -98,7 +120,9 @@ function Current_Websites() {
                             <Current_Websites_Card
                                 item={Website}
                                 key={index}
-                                onDelete={() => handleDeleteWebsite(Website._id)}
+                                onDelete={() =>
+                                    handleDeleteWebsite(Website._id)
+                                }
                             />
                         ))}
 
@@ -111,7 +135,9 @@ function Current_Websites() {
                             <Current_Websites_Card
                                 item={Website}
                                 key={index}
-                                onDelete={() => handleDeleteWebsite(Website._id)}
+                                onDelete={() =>
+                                    handleDeleteWebsite(Website._id)
+                                }
                             />
                         ))}
                     {search &&

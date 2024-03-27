@@ -64,7 +64,7 @@ function Requests_Requests() {
                 </Link>
                 <div className=" flex justify-center items-center gap-1 text-2xl text-gray pt-8">
                     <IoWarning />
-                    No Requests Requests from this user
+                    No Requests from this user
                 </div>
             </div>
         );
